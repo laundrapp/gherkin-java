@@ -4,3 +4,5 @@ target/
 acceptance/
 .built
 .compared
+/gherkin-java.iml
+/.gradle
