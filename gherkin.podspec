@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.public_header_files = 'gen/objc/**/*.h'
   s.header_mappings_dir = 'gen/objc'
 
-  s.dependency 'base64', :git => 'git@github.com:laundrapp/base64.git', :tag => '2.3.8.J2ObjC2.0.5'
+  s.dependency 'base64', :git => 'git@github.com:laundrapp/base64.git', :tag => '2.3.8-J2ObjC2.0.5'
 end
