@@ -6,3 +6,4 @@ acceptance/
 .compared
 /gherkin-java.iml
 /.gradle
+.DS_Store
