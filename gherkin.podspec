@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "gherkin-java"
   s.version          = '5.0.0.J2ObjC2.0.5'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
-  s.source           = { :git => "https://github.com/hambroperks/jchronic.git", :tag => "0.2.7-SNAPSHOT-J2ObjC1.2" }
+  s.source           = { :git => "https://github.com/laundrapp/gherkin-java.git", :tag => "5.0.0-SNAPSHOT-J2ObjC2.0.5" }
   s.summary 	       = "Converted to Objective-C using J2ObjC."
   s.homepage         = "https://github.com/cucumber/gherkin-java"
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
