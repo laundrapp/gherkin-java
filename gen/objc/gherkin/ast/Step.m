@@ -23,10 +23,10 @@ J2OBJC_FIELD_SETTER(GherkinAstStep, argument_, GherkinAstNode *)
 
 @implementation GherkinAstStep
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)keyword
-                              withNSString:(NSString *)text
-                        withGherkinAstNode:(GherkinAstNode *)argument {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)keyword
+                                        withNSString:(NSString *)text
+                                  withGherkinAstNode:(GherkinAstNode *)argument {
   GherkinAstStep_initWithGherkinAstLocation_withNSString_withNSString_withGherkinAstNode_(self, location, keyword, text, argument);
   return self;
 }

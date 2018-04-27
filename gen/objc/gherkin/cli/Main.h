@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinCliMain
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinCliMain_) && (INCLUDE_ALL_GherkinCliMain || defined(INCLUDE_GherkinCliMain))
 #define GherkinCliMain_
 
@@ -22,7 +27,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (void)mainWithNSStringArray:(IOSObjectArray *)argv;
 
@@ -42,4 +47,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinCliMain)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinCliMain")

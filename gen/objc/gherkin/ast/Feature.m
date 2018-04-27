@@ -31,13 +31,13 @@ J2OBJC_FIELD_SETTER(GherkinAstFeature, children_, id<JavaUtilList>)
 
 @implementation GherkinAstFeature
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tags
-              withGherkinAstLocation:(GherkinAstLocation *)location
-                        withNSString:(NSString *)language
-                        withNSString:(NSString *)keyword
-                        withNSString:(NSString *)name
-                        withNSString:(NSString *)description_
-                    withJavaUtilList:(id<JavaUtilList>)children {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tags
+                        withGherkinAstLocation:(GherkinAstLocation *)location
+                                  withNSString:(NSString *)language
+                                  withNSString:(NSString *)keyword
+                                  withNSString:(NSString *)name
+                                  withNSString:(NSString *)description_
+                              withJavaUtilList:(id<JavaUtilList>)children {
   GherkinAstFeature_initWithJavaUtilList_withGherkinAstLocation_withNSString_withNSString_withNSString_withNSString_withJavaUtilList_(self, tags, location, language, keyword, name, description_, children);
   return self;
 }

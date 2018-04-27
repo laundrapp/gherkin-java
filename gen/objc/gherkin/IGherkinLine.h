@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinIGherkinLine
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinIGherkinLine_) && (INCLUDE_ALL_GherkinIGherkinLine || defined(INCLUDE_GherkinIGherkinLine))
 #define GherkinIGherkinLine_
 
@@ -47,4 +52,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinIGherkinLine)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinIGherkinLine")

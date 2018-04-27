@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinFunc
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinFunc_) && (INCLUDE_ALL_GherkinFunc || defined(INCLUDE_GherkinFunc))
 #define GherkinFunc_
 
@@ -28,4 +33,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinFunc)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinFunc")

@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinToken
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinToken_) && (INCLUDE_ALL_GherkinToken || defined(INCLUDE_GherkinToken))
 #define GherkinToken_
 
@@ -36,8 +41,8 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinIGherkinLine:(id<GherkinIGherkinLine>)line
-                     withGherkinAstLocation:(GherkinAstLocation *)location;
+- (instancetype __nonnull)initWithGherkinIGherkinLine:(id<GherkinIGherkinLine>)line
+                               withGherkinAstLocation:(GherkinAstLocation *)location;
 
 - (void)detach;
 
@@ -49,7 +54,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -73,4 +78,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinToken)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinToken")

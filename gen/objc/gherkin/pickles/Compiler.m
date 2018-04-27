@@ -62,7 +62,7 @@ __attribute__((unused)) static GherkinPicklesPickleTag *GherkinPicklesCompiler_p
 @implementation GherkinPicklesCompiler
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinPicklesCompiler_init(self);
   return self;
 }

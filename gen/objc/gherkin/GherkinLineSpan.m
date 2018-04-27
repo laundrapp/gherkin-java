@@ -9,8 +9,8 @@
 
 @implementation GherkinGherkinLineSpan
 
-- (instancetype)initWithInt:(jint)column
-               withNSString:(NSString *)text {
+- (instancetype __nonnull)initWithInt:(jint)column
+                         withNSString:(NSString *)text {
   GherkinGherkinLineSpan_initWithInt_withNSString_(self, column, text);
   return self;
 }

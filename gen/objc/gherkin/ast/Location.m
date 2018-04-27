@@ -16,8 +16,8 @@
 
 @implementation GherkinAstLocation
 
-- (instancetype)initWithInt:(jint)line
-                    withInt:(jint)column {
+- (instancetype __nonnull)initWithInt:(jint)line
+                              withInt:(jint)column {
   GherkinAstLocation_initWithInt_withInt_(self, line, column);
   return self;
 }

@@ -23,13 +23,13 @@ J2OBJC_FIELD_SETTER(GherkinAstScenarioOutline, examples_, id<JavaUtilList>)
 
 @implementation GherkinAstScenarioOutline
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tags
-              withGherkinAstLocation:(GherkinAstLocation *)location
-                        withNSString:(NSString *)keyword
-                        withNSString:(NSString *)name
-                        withNSString:(NSString *)description_
-                    withJavaUtilList:(id<JavaUtilList>)steps
-                    withJavaUtilList:(id<JavaUtilList>)examples {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tags
+                        withGherkinAstLocation:(GherkinAstLocation *)location
+                                  withNSString:(NSString *)keyword
+                                  withNSString:(NSString *)name
+                                  withNSString:(NSString *)description_
+                              withJavaUtilList:(id<JavaUtilList>)steps
+                              withJavaUtilList:(id<JavaUtilList>)examples {
   GherkinAstScenarioOutline_initWithJavaUtilList_withGherkinAstLocation_withNSString_withNSString_withNSString_withJavaUtilList_withJavaUtilList_(self, tags, location, keyword, name, description_, steps, examples);
   return self;
 }

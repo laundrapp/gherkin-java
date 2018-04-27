@@ -19,7 +19,7 @@ JavaIoPrintWriter *GherkinStreamStdio_err;
 @implementation GherkinStreamStdio
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinStreamStdio_init(self);
   return self;
 }

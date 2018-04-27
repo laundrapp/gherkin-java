@@ -26,12 +26,12 @@ J2OBJC_FIELD_SETTER(GherkinTokenScanner, reader_, JavaIoBufferedReader *)
 
 @implementation GherkinTokenScanner
 
-- (instancetype)initWithNSString:(NSString *)source {
+- (instancetype __nonnull)initWithNSString:(NSString *)source {
   GherkinTokenScanner_initWithNSString_(self, source);
   return self;
 }
 
-- (instancetype)initWithJavaIoReader:(JavaIoReader *)source {
+- (instancetype __nonnull)initWithJavaIoReader:(JavaIoReader *)source {
   GherkinTokenScanner_initWithJavaIoReader_(self, source);
   return self;
 }

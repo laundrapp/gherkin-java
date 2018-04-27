@@ -18,8 +18,8 @@ J2OBJC_FIELD_SETTER(GherkinEventsGherkinDocumentEvent, type_, NSString *)
 
 @implementation GherkinEventsGherkinDocumentEvent
 
-- (instancetype)initWithNSString:(NSString *)uri
-   withGherkinAstGherkinDocument:(GherkinAstGherkinDocument *)document {
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+             withGherkinAstGherkinDocument:(GherkinAstGherkinDocument *)document {
   GherkinEventsGherkinDocumentEvent_initWithNSString_withGherkinAstGherkinDocument_(self, uri, document);
   return self;
 }

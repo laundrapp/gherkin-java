@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinEventsPickleEvent
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinEventsPickleEvent_) && (INCLUDE_ALL_GherkinEventsPickleEvent || defined(INCLUDE_GherkinEventsPickleEvent))
 #define GherkinEventsPickleEvent_
 
@@ -30,12 +35,12 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)uri
-        withGherkinPicklesPickle:(GherkinPicklesPickle *)pickle;
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+                  withGherkinPicklesPickle:(GherkinPicklesPickle *)pickle;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -54,4 +59,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsPickleEvent)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinEventsPickleEvent")

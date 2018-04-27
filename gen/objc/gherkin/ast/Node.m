@@ -21,7 +21,7 @@ J2OBJC_FIELD_SETTER(GherkinAstNode, location_, GherkinAstLocation *)
 
 @implementation GherkinAstNode
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location {
   GherkinAstNode_initWithGherkinAstLocation_(self, location);
   return self;
 }

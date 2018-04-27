@@ -33,7 +33,7 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinParser_Builder:(id<GherkinParser_Builder>)builder;
+- (instancetype __nonnull)initWithGherkinParser_Builder:(id<GherkinParser_Builder>)builder;
 
 - (id)parseWithGherkinParser_ITokenScanner:(id<GherkinParser_ITokenScanner>)tokenScanner;
 
@@ -52,7 +52,7 @@ withGherkinParser_ITokenMatcher:(id<GherkinParser_ITokenMatcher>)tokenMatcher;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -354,15 +354,15 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinParser_RuleType)
 
 #pragma mark Package-Private
 
-- (instancetype)initWithGherkinParser:(GherkinParser *)outer$
-      withGherkinParser_ITokenScanner:(id<GherkinParser_ITokenScanner>)tokenScanner
-      withGherkinParser_ITokenMatcher:(id<GherkinParser_ITokenMatcher>)tokenMatcher
-                    withJavaUtilQueue:(id<JavaUtilQueue>)tokenQueue
-                     withJavaUtilList:(id<JavaUtilList>)errors;
+- (instancetype __nonnull)initWithGherkinParser:(GherkinParser *)outer$
+                withGherkinParser_ITokenScanner:(id<GherkinParser_ITokenScanner>)tokenScanner
+                withGherkinParser_ITokenMatcher:(id<GherkinParser_ITokenMatcher>)tokenMatcher
+                              withJavaUtilQueue:(id<JavaUtilQueue>)tokenQueue
+                               withJavaUtilList:(id<JavaUtilList>)errors;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 

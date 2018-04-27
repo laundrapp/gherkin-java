@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinPicklesPickle
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinPicklesPickle_) && (INCLUDE_ALL_GherkinPicklesPickle || defined(INCLUDE_GherkinPicklesPickle))
 #define GherkinPicklesPickle_
 
@@ -22,11 +27,11 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)name
-                    withNSString:(NSString *)language
-                withJavaUtilList:(id<JavaUtilList>)steps
-                withJavaUtilList:(id<JavaUtilList>)tags
-                withJavaUtilList:(id<JavaUtilList>)locations;
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                              withNSString:(NSString *)language
+                          withJavaUtilList:(id<JavaUtilList>)steps
+                          withJavaUtilList:(id<JavaUtilList>)tags
+                          withJavaUtilList:(id<JavaUtilList>)locations;
 
 - (NSString *)getLanguage;
 
@@ -40,7 +45,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,4 +61,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinPicklesPickle)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinPicklesPickle")

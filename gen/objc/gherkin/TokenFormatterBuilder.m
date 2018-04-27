@@ -24,7 +24,7 @@ J2OBJC_FIELD_SETTER(GherkinTokenFormatterBuilder, tokensTextBuilder_, JavaLangSt
 @implementation GherkinTokenFormatterBuilder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinTokenFormatterBuilder_init(self);
   return self;
 }

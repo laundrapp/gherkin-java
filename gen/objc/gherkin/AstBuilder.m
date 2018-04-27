@@ -79,7 +79,7 @@ __attribute__((unused)) static GherkinAstBuilder_1 *create_GherkinAstBuilder_1_i
 @implementation GherkinAstBuilder
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinAstBuilder_init(self);
   return self;
 }

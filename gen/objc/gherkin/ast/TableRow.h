@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstTableRow
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstTableRow_) && (INCLUDE_ALL_GherkinAstTableRow || defined(INCLUDE_GherkinAstTableRow))
 #define GherkinAstTableRow_
 
@@ -27,14 +32,14 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                          withJavaUtilList:(id<JavaUtilList>)cells;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                    withJavaUtilList:(id<JavaUtilList>)cells;
 
 - (id<JavaUtilList>)getCells;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
 
 @end
 
@@ -50,4 +55,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstTableRow)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstTableRow")

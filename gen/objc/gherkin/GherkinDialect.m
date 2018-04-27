@@ -22,8 +22,8 @@ J2OBJC_FIELD_SETTER(GherkinGherkinDialect, language_, NSString *)
 
 @implementation GherkinGherkinDialect
 
-- (instancetype)initWithNSString:(NSString *)language
-                 withJavaUtilMap:(id<JavaUtilMap>)keywords {
+- (instancetype __nonnull)initWithNSString:(NSString *)language
+                           withJavaUtilMap:(id<JavaUtilMap>)keywords {
   GherkinGherkinDialect_initWithNSString_withJavaUtilMap_(self, language, keywords);
   return self;
 }

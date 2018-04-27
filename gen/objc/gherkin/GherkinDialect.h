@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinGherkinDialect
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinGherkinDialect_) && (INCLUDE_ALL_GherkinGherkinDialect || defined(INCLUDE_GherkinGherkinDialect))
 #define GherkinGherkinDialect_
 
@@ -23,8 +28,8 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)language
-                 withJavaUtilMap:(id<JavaUtilMap>)keywords;
+- (instancetype __nonnull)initWithNSString:(NSString *)language
+                           withJavaUtilMap:(id<JavaUtilMap>)keywords;
 
 - (id<JavaUtilList>)getAndKeywords;
 
@@ -52,7 +57,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -68,4 +73,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinGherkinDialect)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinGherkinDialect")

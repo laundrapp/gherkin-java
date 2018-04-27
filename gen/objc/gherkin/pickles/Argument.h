@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinPicklesArgument
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinPicklesArgument_) && (INCLUDE_ALL_GherkinPicklesArgument || defined(INCLUDE_GherkinPicklesArgument))
 #define GherkinPicklesArgument_
 
@@ -30,4 +35,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinPicklesArgument)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinPicklesArgument")

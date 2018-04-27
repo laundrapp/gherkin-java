@@ -43,13 +43,13 @@ __attribute__((unused)) static GherkinParserException_CompositeParserException_1
 
 @implementation GherkinParserException
 
-- (instancetype)initWithNSString:(NSString *)message {
+- (instancetype __nonnull)initWithNSString:(NSString *)message {
   GherkinParserException_initWithNSString_(self, message);
   return self;
 }
 
-- (instancetype)initWithNSString:(NSString *)message
-          withGherkinAstLocation:(GherkinAstLocation *)location {
+- (instancetype __nonnull)initWithNSString:(NSString *)message
+                    withGherkinAstLocation:(GherkinAstLocation *)location {
   GherkinParserException_initWithNSString_withGherkinAstLocation_(self, message, location);
   return self;
 }
@@ -96,8 +96,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParserException)
 
 @implementation GherkinParserException_AstBuilderException
 
-- (instancetype)initWithNSString:(NSString *)message
-          withGherkinAstLocation:(GherkinAstLocation *)location {
+- (instancetype __nonnull)initWithNSString:(NSString *)message
+                    withGherkinAstLocation:(GherkinAstLocation *)location {
   GherkinParserException_AstBuilderException_initWithNSString_withGherkinAstLocation_(self, message, location);
   return self;
 }
@@ -120,8 +120,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParserException_AstBuilderException)
 
 @implementation GherkinParserException_NoSuchLanguageException
 
-- (instancetype)initWithNSString:(NSString *)language
-          withGherkinAstLocation:(GherkinAstLocation *)location {
+- (instancetype __nonnull)initWithNSString:(NSString *)language
+                    withGherkinAstLocation:(GherkinAstLocation *)location {
   GherkinParserException_NoSuchLanguageException_initWithNSString_withGherkinAstLocation_(self, language, location);
   return self;
 }
@@ -144,9 +144,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParserException_NoSuchLanguageException)
 
 @implementation GherkinParserException_UnexpectedTokenException
 
-- (instancetype)initWithGherkinToken:(GherkinToken *)receivedToken
-                    withJavaUtilList:(id<JavaUtilList>)expectedTokenTypes
-                        withNSString:(NSString *)stateComment {
+- (instancetype __nonnull)initWithGherkinToken:(GherkinToken *)receivedToken
+                              withJavaUtilList:(id<JavaUtilList>)expectedTokenTypes
+                                  withNSString:(NSString *)stateComment {
   GherkinParserException_UnexpectedTokenException_initWithGherkinToken_withJavaUtilList_withNSString_(self, receivedToken, expectedTokenTypes, stateComment);
   return self;
 }
@@ -189,9 +189,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParserException_UnexpectedTokenException
 
 @implementation GherkinParserException_UnexpectedEOFException
 
-- (instancetype)initWithGherkinToken:(GherkinToken *)receivedToken
-                    withJavaUtilList:(id<JavaUtilList>)expectedTokenTypes
-                        withNSString:(NSString *)stateComment {
+- (instancetype __nonnull)initWithGherkinToken:(GherkinToken *)receivedToken
+                              withJavaUtilList:(id<JavaUtilList>)expectedTokenTypes
+                                  withNSString:(NSString *)stateComment {
   GherkinParserException_UnexpectedEOFException_initWithGherkinToken_withJavaUtilList_withNSString_(self, receivedToken, expectedTokenTypes, stateComment);
   return self;
 }
@@ -227,7 +227,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParserException_UnexpectedEOFException)
 
 @implementation GherkinParserException_CompositeParserException
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)errors {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)errors {
   GherkinParserException_CompositeParserException_initWithJavaUtilList_(self, errors);
   return self;
 }

@@ -21,9 +21,9 @@ J2OBJC_FIELD_SETTER(GherkinAstDocString, content_, NSString *)
 
 @implementation GherkinAstDocString
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)contentType
-                              withNSString:(NSString *)content {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)contentType
+                                        withNSString:(NSString *)content {
   GherkinAstDocString_initWithGherkinAstLocation_withNSString_withNSString_(self, location, contentType, content);
   return self;
 }

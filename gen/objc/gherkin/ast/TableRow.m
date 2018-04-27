@@ -21,8 +21,8 @@ J2OBJC_FIELD_SETTER(GherkinAstTableRow, cells_, id<JavaUtilList>)
 
 @implementation GherkinAstTableRow
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                          withJavaUtilList:(id<JavaUtilList>)cells {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                    withJavaUtilList:(id<JavaUtilList>)cells {
   GherkinAstTableRow_initWithGherkinAstLocation_withJavaUtilList_(self, location, cells);
   return self;
 }

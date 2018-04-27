@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstTableCell
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstTableCell_) && (INCLUDE_ALL_GherkinAstTableCell || defined(INCLUDE_GherkinAstTableCell))
 #define GherkinAstTableCell_
 
@@ -26,14 +31,14 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)value;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)value;
 
 - (NSString *)getValue;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
 
 @end
 
@@ -49,4 +54,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstTableCell)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstTableCell")

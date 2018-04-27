@@ -15,8 +15,8 @@
 
 @implementation GherkinToken
 
-- (instancetype)initWithGherkinIGherkinLine:(id<GherkinIGherkinLine>)line
-                     withGherkinAstLocation:(GherkinAstLocation *)location {
+- (instancetype __nonnull)initWithGherkinIGherkinLine:(id<GherkinIGherkinLine>)line
+                               withGherkinAstLocation:(GherkinAstLocation *)location {
   GherkinToken_initWithGherkinIGherkinLine_withGherkinAstLocation_(self, line, location);
   return self;
 }

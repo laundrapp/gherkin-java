@@ -22,7 +22,7 @@ J2OBJC_FIELD_SETTER(GherkinAstDataTable, rows_, id<JavaUtilList>)
 
 @implementation GherkinAstDataTable
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)rows {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)rows {
   GherkinAstDataTable_initWithJavaUtilList_(self, rows);
   return self;
 }

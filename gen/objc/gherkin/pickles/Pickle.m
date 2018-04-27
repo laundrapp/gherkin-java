@@ -27,11 +27,11 @@ J2OBJC_FIELD_SETTER(GherkinPicklesPickle, locations_, id<JavaUtilList>)
 
 @implementation GherkinPicklesPickle
 
-- (instancetype)initWithNSString:(NSString *)name
-                    withNSString:(NSString *)language
-                withJavaUtilList:(id<JavaUtilList>)steps
-                withJavaUtilList:(id<JavaUtilList>)tags
-                withJavaUtilList:(id<JavaUtilList>)locations {
+- (instancetype __nonnull)initWithNSString:(NSString *)name
+                              withNSString:(NSString *)language
+                          withJavaUtilList:(id<JavaUtilList>)steps
+                          withJavaUtilList:(id<JavaUtilList>)tags
+                          withJavaUtilList:(id<JavaUtilList>)locations {
   GherkinPicklesPickle_initWithNSString_withNSString_withJavaUtilList_withJavaUtilList_withJavaUtilList_(self, name, language, steps, tags, locations);
   return self;
 }

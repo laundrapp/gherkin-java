@@ -54,7 +54,7 @@ __attribute__((unused)) static GherkinStreamSourceEvents_1 *create_GherkinStream
 
 @implementation GherkinStreamSourceEvents
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)paths {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)paths {
   GherkinStreamSourceEvents_initWithJavaUtilList_(self, paths);
   return self;
 }
@@ -73,7 +73,7 @@ __attribute__((unused)) static GherkinStreamSourceEvents_1 *create_GherkinStream
 }
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id *)stackbuf count:(NSUInteger)len {
-  return JreDefaultFastEnumeration(self, state, stackbuf, len);
+  return JreDefaultFastEnumeration(self, state, stackbuf);
 }
 
 - (void)dealloc {

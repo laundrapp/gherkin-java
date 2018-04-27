@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinPicklesPickleCell
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinPicklesPickleCell_) && (INCLUDE_ALL_GherkinPicklesPickleCell || defined(INCLUDE_GherkinPicklesPickleCell))
 #define GherkinPicklesPickleCell_
 
@@ -22,8 +27,8 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
-                                        withNSString:(NSString *)value;
+- (instancetype __nonnull)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
+                                                  withNSString:(NSString *)value;
 
 - (GherkinPicklesPickleLocation *)getLocation;
 
@@ -31,7 +36,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -47,4 +52,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinPicklesPickleCell)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinPicklesPickleCell")

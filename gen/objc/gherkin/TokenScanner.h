@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinTokenScanner
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinTokenScanner_) && (INCLUDE_ALL_GherkinTokenScanner || defined(INCLUDE_GherkinTokenScanner))
 #define GherkinTokenScanner_
 
@@ -36,15 +41,15 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaIoReader:(JavaIoReader *)source;
+- (instancetype __nonnull)initWithJavaIoReader:(JavaIoReader *)source;
 
-- (instancetype)initWithNSString:(NSString *)source;
+- (instancetype __nonnull)initWithNSString:(NSString *)source;
 
 - (GherkinToken *)read;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -66,4 +71,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinTokenScanner)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinTokenScanner")

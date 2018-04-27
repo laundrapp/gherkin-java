@@ -41,9 +41,9 @@ __attribute__((unused)) static void GherkinStreamGherkinEvents_addErrorAttachmen
 
 @implementation GherkinStreamGherkinEvents
 
-- (instancetype)initWithBoolean:(jboolean)printSource
-                    withBoolean:(jboolean)printAst
-                    withBoolean:(jboolean)printPickles {
+- (instancetype __nonnull)initWithBoolean:(jboolean)printSource
+                              withBoolean:(jboolean)printAst
+                              withBoolean:(jboolean)printPickles {
   GherkinStreamGherkinEvents_initWithBoolean_withBoolean_withBoolean_(self, printSource, printAst, printPickles);
   return self;
 }

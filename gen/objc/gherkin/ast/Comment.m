@@ -19,8 +19,8 @@ J2OBJC_FIELD_SETTER(GherkinAstComment, text_, NSString *)
 
 @implementation GherkinAstComment
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)text {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)text {
   GherkinAstComment_initWithGherkinAstLocation_withNSString_(self, location, text);
   return self;
 }

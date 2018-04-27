@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstFeature
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstFeature_) && (INCLUDE_ALL_GherkinAstFeature || defined(INCLUDE_GherkinAstFeature))
 #define GherkinAstFeature_
 
@@ -27,13 +32,13 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tags
-              withGherkinAstLocation:(GherkinAstLocation *)location
-                        withNSString:(NSString *)language
-                        withNSString:(NSString *)keyword
-                        withNSString:(NSString *)name
-                        withNSString:(NSString *)description_
-                    withJavaUtilList:(id<JavaUtilList>)children;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tags
+                        withGherkinAstLocation:(GherkinAstLocation *)location
+                                  withNSString:(NSString *)language
+                                  withNSString:(NSString *)keyword
+                                  withNSString:(NSString *)name
+                                  withNSString:(NSString *)description_
+                              withJavaUtilList:(id<JavaUtilList>)children;
 
 - (id<JavaUtilList>)getChildren;
 
@@ -49,7 +54,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
 
 @end
 
@@ -65,4 +70,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstFeature)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstFeature")

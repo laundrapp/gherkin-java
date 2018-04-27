@@ -19,8 +19,8 @@ J2OBJC_FIELD_SETTER(GherkinAstTag, name_, NSString *)
 
 @implementation GherkinAstTag
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)name {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)name {
   GherkinAstTag_initWithGherkinAstLocation_withNSString_(self, location, name);
   return self;
 }

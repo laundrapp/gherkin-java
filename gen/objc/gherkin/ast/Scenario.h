@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstScenario
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstScenario_) && (INCLUDE_ALL_GherkinAstScenario || defined(INCLUDE_GherkinAstScenario))
 #define GherkinAstScenario_
 
@@ -27,22 +32,22 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tags
-              withGherkinAstLocation:(GherkinAstLocation *)location
-                        withNSString:(NSString *)keyword
-                        withNSString:(NSString *)name
-                        withNSString:(NSString *)description_
-                    withJavaUtilList:(id<JavaUtilList>)steps;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tags
+                        withGherkinAstLocation:(GherkinAstLocation *)location
+                                  withNSString:(NSString *)keyword
+                                  withNSString:(NSString *)name
+                                  withNSString:(NSString *)description_
+                              withJavaUtilList:(id<JavaUtilList>)steps;
 
 - (id<JavaUtilList>)getTags;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0
-                              withNSString:(NSString *)arg1
-                              withNSString:(NSString *)arg2
-                              withNSString:(NSString *)arg3
-                          withJavaUtilList:(id<JavaUtilList>)arg4 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0
+                                        withNSString:(NSString *)arg1
+                                        withNSString:(NSString *)arg2
+                                        withNSString:(NSString *)arg3
+                                    withJavaUtilList:(id<JavaUtilList>)arg4 NS_UNAVAILABLE;
 
 @end
 
@@ -58,4 +63,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstScenario)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstScenario")

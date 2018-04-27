@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinGherkinDialectProvider
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinGherkinDialectProvider_) && (INCLUDE_ALL_GherkinGherkinDialectProvider || defined(INCLUDE_GherkinGherkinDialectProvider))
 #define GherkinGherkinDialectProvider_
 
@@ -28,9 +33,9 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (instancetype)initWithNSString:(NSString *)default_dialect_name;
+- (instancetype __nonnull)initWithNSString:(NSString *)default_dialect_name;
 
 - (GherkinGherkinDialect *)getDefaultDialect;
 
@@ -59,4 +64,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinGherkinDialectProvider)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinGherkinDialectProvider")

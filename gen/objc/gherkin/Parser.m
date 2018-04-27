@@ -459,7 +459,7 @@ __attribute__((unused)) static GherkinParser_17 *create_GherkinParser_17_initWit
 
 @implementation GherkinParser
 
-- (instancetype)initWithGherkinParser_Builder:(id<GherkinParser_Builder>)builder {
+- (instancetype __nonnull)initWithGherkinParser_Builder:(id<GherkinParser_Builder>)builder {
   GherkinParser_initWithGherkinParser_Builder_(self, builder);
   return self;
 }
@@ -2698,7 +2698,7 @@ GherkinParser_TokenType *GherkinParser_TokenType_values_[15];
       @"None", @"EOF", @"Empty", @"Comment", @"TagLine", @"FeatureLine", @"BackgroundLine", @"ScenarioLine", @"ScenarioOutlineLine", @"ExamplesLine", @"StepLine", @"DocStringSeparator", @"TableRow", @"Language", @"Other",
     };
     for (jint i = 0; i < 15; i++) {
-      (GherkinParser_TokenType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(GherkinParser_TokenType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       GherkinParser_TokenType_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(GherkinParser_TokenType)
@@ -2766,7 +2766,7 @@ GherkinParser_RuleType *GherkinParser_RuleType_values_[32];
       @"None", @"_EOF", @"_Empty", @"_Comment", @"_TagLine", @"_FeatureLine", @"_BackgroundLine", @"_ScenarioLine", @"_ScenarioOutlineLine", @"_ExamplesLine", @"_StepLine", @"_DocStringSeparator", @"_TableRow", @"_Language", @"_Other", @"GherkinDocument", @"Feature", @"Feature_Header", @"Background", @"Scenario_Definition", @"Scenario", @"ScenarioOutline", @"Examples_Definition", @"Examples", @"Examples_Table", @"Step", @"Step_Arg", @"DataTable", @"DocString", @"Tags", @"Description_Helper", @"Description",
     };
     for (jint i = 0; i < 32; i++) {
-      (GherkinParser_RuleType_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(GherkinParser_RuleType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       GherkinParser_RuleType_initWithNSString_withInt_(e, names[i], i);
     }
     J2OBJC_SET_INITIALIZED(GherkinParser_RuleType)
@@ -2813,11 +2813,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinParser_RuleType)
 
 @implementation GherkinParser_ParserContext
 
-- (instancetype)initWithGherkinParser:(GherkinParser *)outer$
-      withGherkinParser_ITokenScanner:(id<GherkinParser_ITokenScanner>)tokenScanner
-      withGherkinParser_ITokenMatcher:(id<GherkinParser_ITokenMatcher>)tokenMatcher
-                    withJavaUtilQueue:(id<JavaUtilQueue>)tokenQueue
-                     withJavaUtilList:(id<JavaUtilList>)errors {
+- (instancetype __nonnull)initWithGherkinParser:(GherkinParser *)outer$
+                withGherkinParser_ITokenScanner:(id<GherkinParser_ITokenScanner>)tokenScanner
+                withGherkinParser_ITokenMatcher:(id<GherkinParser_ITokenMatcher>)tokenMatcher
+                              withJavaUtilQueue:(id<JavaUtilQueue>)tokenQueue
+                               withJavaUtilList:(id<JavaUtilList>)errors {
   GherkinParser_ParserContext_initWithGherkinParser_withGherkinParser_ITokenScanner_withGherkinParser_ITokenMatcher_withJavaUtilQueue_withJavaUtilList_(self, outer$, tokenScanner, tokenMatcher, tokenQueue, errors);
   return self;
 }

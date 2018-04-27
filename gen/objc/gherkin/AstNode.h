@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstNode
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstNode_) && (INCLUDE_ALL_GherkinAstNode || defined(INCLUDE_GherkinAstNode))
 #define GherkinAstNode_
 
@@ -28,7 +33,7 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinParser_RuleType:(GherkinParser_RuleType *)ruleType;
+- (instancetype __nonnull)initWithGherkinParser_RuleType:(GherkinParser_RuleType *)ruleType;
 
 - (void)addWithGherkinParser_RuleType:(GherkinParser_RuleType *)ruleType
                                withId:(id)obj;
@@ -44,7 +49,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -62,4 +67,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstNode)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstNode")

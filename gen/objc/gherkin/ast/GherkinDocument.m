@@ -23,8 +23,8 @@ J2OBJC_FIELD_SETTER(GherkinAstGherkinDocument, comments_, id<JavaUtilList>)
 
 @implementation GherkinAstGherkinDocument
 
-- (instancetype)initWithGherkinAstFeature:(GherkinAstFeature *)feature
-                         withJavaUtilList:(id<JavaUtilList>)comments {
+- (instancetype __nonnull)initWithGherkinAstFeature:(GherkinAstFeature *)feature
+                                   withJavaUtilList:(id<JavaUtilList>)comments {
   GherkinAstGherkinDocument_initWithGherkinAstFeature_withJavaUtilList_(self, feature, comments);
   return self;
 }

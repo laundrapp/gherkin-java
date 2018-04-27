@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinTokenFormatter
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinTokenFormatter_) && (INCLUDE_ALL_GherkinTokenFormatter || defined(INCLUDE_GherkinTokenFormatter))
 #define GherkinTokenFormatter_
 
@@ -22,7 +27,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (NSString *)formatTokenWithGherkinToken:(GherkinToken *)token;
 
@@ -40,4 +45,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinTokenFormatter)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinTokenFormatter")

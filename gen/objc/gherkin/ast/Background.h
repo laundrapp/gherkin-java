@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstBackground
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstBackground_) && (INCLUDE_ALL_GherkinAstBackground || defined(INCLUDE_GherkinAstBackground))
 #define GherkinAstBackground_
 
@@ -27,11 +32,11 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)keyword
-                              withNSString:(NSString *)name
-                              withNSString:(NSString *)description_
-                          withJavaUtilList:(id<JavaUtilList>)steps;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)keyword
+                                        withNSString:(NSString *)name
+                                        withNSString:(NSString *)description_
+                                    withJavaUtilList:(id<JavaUtilList>)steps;
 
 @end
 
@@ -47,4 +52,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstBackground)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstBackground")

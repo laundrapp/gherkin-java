@@ -24,7 +24,7 @@ J2OBJC_FIELD_SETTER(GherkinAstNode, subItems_, id<JavaUtilMap>)
 
 @implementation GherkinAstNode
 
-- (instancetype)initWithGherkinParser_RuleType:(GherkinParser_RuleType *)ruleType {
+- (instancetype __nonnull)initWithGherkinParser_RuleType:(GherkinParser_RuleType *)ruleType {
   GherkinAstNode_initWithGherkinParser_RuleType_(self, ruleType);
   return self;
 }

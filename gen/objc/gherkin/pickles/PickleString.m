@@ -22,15 +22,15 @@ J2OBJC_FIELD_SETTER(GherkinPicklesPickleString, contentType_, NSString *)
 
 @implementation GherkinPicklesPickleString
 
-- (instancetype)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
-                                        withNSString:(NSString *)content
-                                        withNSString:(NSString *)contentType {
+- (instancetype __nonnull)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
+                                                  withNSString:(NSString *)content
+                                                  withNSString:(NSString *)contentType {
   GherkinPicklesPickleString_initWithGherkinPicklesPickleLocation_withNSString_withNSString_(self, location, content, contentType);
   return self;
 }
 
-- (instancetype)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
-                                        withNSString:(NSString *)content {
+- (instancetype __nonnull)initWithGherkinPicklesPickleLocation:(GherkinPicklesPickleLocation *)location
+                                                  withNSString:(NSString *)content {
   GherkinPicklesPickleString_initWithGherkinPicklesPickleLocation_withNSString_(self, location, content);
   return self;
 }

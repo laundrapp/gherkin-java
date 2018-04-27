@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinTokenMatcher
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinTokenMatcher_) && (INCLUDE_ALL_GherkinTokenMatcher || defined(INCLUDE_GherkinTokenMatcher))
 #define GherkinTokenMatcher_
 
@@ -31,11 +36,11 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
-- (instancetype)initWithGherkinIGherkinDialectProvider:(id<GherkinIGherkinDialectProvider>)dialectProvider;
+- (instancetype __nonnull)initWithGherkinIGherkinDialectProvider:(id<GherkinIGherkinDialectProvider>)dialectProvider;
 
-- (instancetype)initWithNSString:(NSString *)defaultDialectName;
+- (instancetype __nonnull)initWithNSString:(NSString *)defaultDialectName;
 
 - (GherkinGherkinDialect *)getCurrentDialect;
 
@@ -104,4 +109,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinTokenMatcher)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinTokenMatcher")

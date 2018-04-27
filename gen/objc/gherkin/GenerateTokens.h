@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinGenerateTokens
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinGenerateTokens_) && (INCLUDE_ALL_GherkinGenerateTokens || defined(INCLUDE_GherkinGenerateTokens))
 #define GherkinGenerateTokens_
 
@@ -22,7 +27,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (void)mainWithNSStringArray:(IOSObjectArray *)args;
 
@@ -42,4 +47,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinGenerateTokens)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinGenerateTokens")

@@ -27,11 +27,11 @@ J2OBJC_FIELD_SETTER(GherkinAstScenarioDefinition, steps_, id<JavaUtilList>)
 
 @implementation GherkinAstScenarioDefinition
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)keyword
-                              withNSString:(NSString *)name
-                              withNSString:(NSString *)description_
-                          withJavaUtilList:(id<JavaUtilList>)steps {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)keyword
+                                        withNSString:(NSString *)name
+                                        withNSString:(NSString *)description_
+                                    withJavaUtilList:(id<JavaUtilList>)steps {
   GherkinAstScenarioDefinition_initWithGherkinAstLocation_withNSString_withNSString_withNSString_withJavaUtilList_(self, location, keyword, name, description_, steps);
   return self;
 }

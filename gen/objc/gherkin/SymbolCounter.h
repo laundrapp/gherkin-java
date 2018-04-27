@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinSymbolCounter
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinSymbolCounter_) && (INCLUDE_ALL_GherkinSymbolCounter || defined(INCLUDE_GherkinSymbolCounter))
 #define GherkinSymbolCounter_
 
@@ -20,7 +25,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (jint)countSymbolsWithNSString:(NSString *)string;
 
@@ -40,4 +45,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinSymbolCounter)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinSymbolCounter")

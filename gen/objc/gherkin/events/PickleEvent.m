@@ -18,8 +18,8 @@ J2OBJC_FIELD_SETTER(GherkinEventsPickleEvent, type_, NSString *)
 
 @implementation GherkinEventsPickleEvent
 
-- (instancetype)initWithNSString:(NSString *)uri
-        withGherkinPicklesPickle:(GherkinPicklesPickle *)pickle {
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+                  withGherkinPicklesPickle:(GherkinPicklesPickle *)pickle {
   GherkinEventsPickleEvent_initWithNSString_withGherkinPicklesPickle_(self, uri, pickle);
   return self;
 }

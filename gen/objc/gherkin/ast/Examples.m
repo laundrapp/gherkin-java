@@ -32,13 +32,13 @@ J2OBJC_FIELD_SETTER(GherkinAstExamples, tableBody_, id<JavaUtilList>)
 
 @implementation GherkinAstExamples
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                          withJavaUtilList:(id<JavaUtilList>)tags
-                              withNSString:(NSString *)keyword
-                              withNSString:(NSString *)name
-                              withNSString:(NSString *)description_
-                    withGherkinAstTableRow:(GherkinAstTableRow *)tableHeader
-                          withJavaUtilList:(id<JavaUtilList>)tableBody {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                    withJavaUtilList:(id<JavaUtilList>)tags
+                                        withNSString:(NSString *)keyword
+                                        withNSString:(NSString *)name
+                                        withNSString:(NSString *)description_
+                              withGherkinAstTableRow:(GherkinAstTableRow *)tableHeader
+                                    withJavaUtilList:(id<JavaUtilList>)tableBody {
   GherkinAstExamples_initWithGherkinAstLocation_withJavaUtilList_withNSString_withNSString_withNSString_withGherkinAstTableRow_withJavaUtilList_(self, location, tags, keyword, name, description_, tableHeader, tableBody);
   return self;
 }

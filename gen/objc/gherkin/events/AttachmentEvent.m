@@ -53,8 +53,8 @@ J2OBJC_FIELD_SETTER(GherkinEventsAttachmentEvent_Media, type_, NSString *)
 
 @implementation GherkinEventsAttachmentEvent
 
-- (instancetype)initWithGherkinEventsAttachmentEvent_SourceRef:(GherkinEventsAttachmentEvent_SourceRef *)source
-                                                  withNSString:(NSString *)data {
+- (instancetype __nonnull)initWithGherkinEventsAttachmentEvent_SourceRef:(GherkinEventsAttachmentEvent_SourceRef *)source
+                                                            withNSString:(NSString *)data {
   GherkinEventsAttachmentEvent_initWithGherkinEventsAttachmentEvent_SourceRef_withNSString_(self, source, data);
   return self;
 }
@@ -89,8 +89,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinEventsAttachmentEvent)
 
 @implementation GherkinEventsAttachmentEvent_SourceRef
 
-- (instancetype)initWithNSString:(NSString *)uri
-withGherkinEventsAttachmentEvent_Location:(GherkinEventsAttachmentEvent_Location *)start {
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+ withGherkinEventsAttachmentEvent_Location:(GherkinEventsAttachmentEvent_Location *)start {
   GherkinEventsAttachmentEvent_SourceRef_initWithNSString_withGherkinEventsAttachmentEvent_Location_(self, uri, start);
   return self;
 }
@@ -121,8 +121,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinEventsAttachmentEvent_SourceRef)
 
 @implementation GherkinEventsAttachmentEvent_Location
 
-- (instancetype)initWithInt:(jint)line
-                    withInt:(jint)column {
+- (instancetype __nonnull)initWithInt:(jint)line
+                              withInt:(jint)column {
   GherkinEventsAttachmentEvent_Location_initWithInt_withInt_(self, line, column);
   return self;
 }
@@ -148,7 +148,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinEventsAttachmentEvent_Location)
 @implementation GherkinEventsAttachmentEvent_Media
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinEventsAttachmentEvent_Media_init(self);
   return self;
 }

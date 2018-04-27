@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstDataTable
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstDataTable_) && (INCLUDE_ALL_GherkinAstDataTable || defined(INCLUDE_GherkinAstDataTable))
 #define GherkinAstDataTable_
 
@@ -27,13 +32,13 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)rows;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)rows;
 
 - (id<JavaUtilList>)getRows;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
 
 @end
 
@@ -49,4 +54,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstDataTable)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstDataTable")

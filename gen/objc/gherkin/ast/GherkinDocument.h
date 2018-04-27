@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstGherkinDocument
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstGherkinDocument_) && (INCLUDE_ALL_GherkinAstGherkinDocument || defined(INCLUDE_GherkinAstGherkinDocument))
 #define GherkinAstGherkinDocument_
 
@@ -28,8 +33,8 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinAstFeature:(GherkinAstFeature *)feature
-                         withJavaUtilList:(id<JavaUtilList>)comments;
+- (instancetype __nonnull)initWithGherkinAstFeature:(GherkinAstFeature *)feature
+                                   withJavaUtilList:(id<JavaUtilList>)comments;
 
 - (id<JavaUtilList>)getComments;
 
@@ -37,7 +42,7 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0 NS_UNAVAILABLE;
 
 @end
 
@@ -53,4 +58,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstGherkinDocument)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstGherkinDocument")

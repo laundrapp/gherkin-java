@@ -32,7 +32,7 @@ __attribute__((unused)) static id<JavaUtilList> GherkinGherkinLine_getSpansWithN
 
 @implementation GherkinGherkinLine
 
-- (instancetype)initWithNSString:(NSString *)lineText {
+- (instancetype __nonnull)initWithNSString:(NSString *)lineText {
   GherkinGherkinLine_initWithNSString_(self, lineText);
   return self;
 }

@@ -22,7 +22,7 @@ J2OBJC_FIELD_SETTER(GherkinPicklesPickleTable, rows_, id<JavaUtilList>)
 
 @implementation GherkinPicklesPickleTable
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)rows {
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)rows {
   GherkinPicklesPickleTable_initWithJavaUtilList_(self, rows);
   return self;
 }

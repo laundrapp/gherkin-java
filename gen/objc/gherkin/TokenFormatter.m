@@ -40,7 +40,7 @@ J2OBJC_INITIALIZED_DEFN(GherkinTokenFormatter)
 @implementation GherkinTokenFormatter
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinTokenFormatter_init(self);
   return self;
 }

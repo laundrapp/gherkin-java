@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinPicklesCompiler
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinPicklesCompiler_) && (INCLUDE_ALL_GherkinPicklesCompiler || defined(INCLUDE_GherkinPicklesCompiler))
 #define GherkinPicklesCompiler_
 
@@ -23,7 +28,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 - (id<JavaUtilList>)compileWithGherkinAstGherkinDocument:(GherkinAstGherkinDocument *)gherkinDocument;
 
@@ -41,4 +46,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinPicklesCompiler)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinPicklesCompiler")

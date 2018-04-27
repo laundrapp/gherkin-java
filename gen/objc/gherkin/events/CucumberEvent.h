@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinEventsCucumberEvent
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinEventsCucumberEvent_) && (INCLUDE_ALL_GherkinEventsCucumberEvent || defined(INCLUDE_GherkinEventsCucumberEvent))
 #define GherkinEventsCucumberEvent_
 
@@ -26,4 +31,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsCucumberEvent)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinEventsCucumberEvent")

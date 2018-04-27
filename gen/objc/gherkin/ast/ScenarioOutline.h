@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstScenarioOutline
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstScenarioOutline_) && (INCLUDE_ALL_GherkinAstScenarioOutline || defined(INCLUDE_GherkinAstScenarioOutline))
 #define GherkinAstScenarioOutline_
 
@@ -27,13 +32,13 @@
 
 #pragma mark Public
 
-- (instancetype)initWithJavaUtilList:(id<JavaUtilList>)tags
-              withGherkinAstLocation:(GherkinAstLocation *)location
-                        withNSString:(NSString *)keyword
-                        withNSString:(NSString *)name
-                        withNSString:(NSString *)description_
-                    withJavaUtilList:(id<JavaUtilList>)steps
-                    withJavaUtilList:(id<JavaUtilList>)examples;
+- (instancetype __nonnull)initWithJavaUtilList:(id<JavaUtilList>)tags
+                        withGherkinAstLocation:(GherkinAstLocation *)location
+                                  withNSString:(NSString *)keyword
+                                  withNSString:(NSString *)name
+                                  withNSString:(NSString *)description_
+                              withJavaUtilList:(id<JavaUtilList>)steps
+                              withJavaUtilList:(id<JavaUtilList>)examples;
 
 - (id<JavaUtilList>)getExamples;
 
@@ -41,11 +46,11 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)arg0
-                              withNSString:(NSString *)arg1
-                              withNSString:(NSString *)arg2
-                              withNSString:(NSString *)arg3
-                          withJavaUtilList:(id<JavaUtilList>)arg4 NS_UNAVAILABLE;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)arg0
+                                        withNSString:(NSString *)arg1
+                                        withNSString:(NSString *)arg2
+                                        withNSString:(NSString *)arg3
+                                    withJavaUtilList:(id<JavaUtilList>)arg4 NS_UNAVAILABLE;
 
 @end
 
@@ -61,4 +66,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstScenarioOutline)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstScenarioOutline")

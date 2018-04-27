@@ -19,8 +19,8 @@ J2OBJC_FIELD_SETTER(GherkinAstTableCell, value_, NSString *)
 
 @implementation GherkinAstTableCell
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location
-                              withNSString:(NSString *)value {
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location
+                                        withNSString:(NSString *)value {
   GherkinAstTableCell_initWithGherkinAstLocation_withNSString_(self, location, value);
   return self;
 }

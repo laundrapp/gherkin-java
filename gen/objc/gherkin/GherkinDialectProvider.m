@@ -39,13 +39,13 @@ J2OBJC_INITIALIZED_DEFN(GherkinGherkinDialectProvider)
 
 @implementation GherkinGherkinDialectProvider
 
-- (instancetype)initWithNSString:(NSString *)default_dialect_name {
+- (instancetype __nonnull)initWithNSString:(NSString *)default_dialect_name {
   GherkinGherkinDialectProvider_initWithNSString_(self, default_dialect_name);
   return self;
 }
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinGherkinDialectProvider_init(self);
   return self;
 }

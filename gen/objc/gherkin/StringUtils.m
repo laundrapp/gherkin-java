@@ -27,7 +27,7 @@ __attribute__((unused)) static GherkinStringUtils_ToString_1 *create_GherkinStri
 @implementation GherkinStringUtils
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinStringUtils_init(self);
   return self;
 }

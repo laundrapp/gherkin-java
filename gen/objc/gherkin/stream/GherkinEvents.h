@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinStreamGherkinEvents
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinStreamGherkinEvents_) && (INCLUDE_ALL_GherkinStreamGherkinEvents || defined(INCLUDE_GherkinStreamGherkinEvents))
 #define GherkinStreamGherkinEvents_
 
@@ -23,15 +28,15 @@
 
 #pragma mark Public
 
-- (instancetype)initWithBoolean:(jboolean)printSource
-                    withBoolean:(jboolean)printAst
-                    withBoolean:(jboolean)printPickles;
+- (instancetype __nonnull)initWithBoolean:(jboolean)printSource
+                              withBoolean:(jboolean)printAst
+                              withBoolean:(jboolean)printPickles;
 
 - (id<JavaLangIterable>)iterableWithGherkinEventsSourceEvent:(GherkinEventsSourceEvent *)sourceEvent;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -47,4 +52,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinStreamGherkinEvents)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinStreamGherkinEvents")

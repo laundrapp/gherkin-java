@@ -46,19 +46,19 @@ J2OBJC_INITIALIZED_DEFN(GherkinTokenMatcher)
 
 @implementation GherkinTokenMatcher
 
-- (instancetype)initWithGherkinIGherkinDialectProvider:(id<GherkinIGherkinDialectProvider>)dialectProvider {
+- (instancetype __nonnull)initWithGherkinIGherkinDialectProvider:(id<GherkinIGherkinDialectProvider>)dialectProvider {
   GherkinTokenMatcher_initWithGherkinIGherkinDialectProvider_(self, dialectProvider);
   return self;
 }
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinTokenMatcher_init(self);
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (instancetype)initWithNSString:(NSString *)defaultDialectName {
+- (instancetype __nonnull)initWithNSString:(NSString *)defaultDialectName {
   GherkinTokenMatcher_initWithNSString_(self, defaultDialectName);
   return self;
 }

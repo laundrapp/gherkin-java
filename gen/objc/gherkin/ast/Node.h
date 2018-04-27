@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinAstNode
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinAstNode_) && (INCLUDE_ALL_GherkinAstNode || defined(INCLUDE_GherkinAstNode))
 #define GherkinAstNode_
 
@@ -26,7 +31,7 @@
 
 #pragma mark Protected
 
-- (instancetype)initWithGherkinAstLocation:(GherkinAstLocation *)location;
+- (instancetype __nonnull)initWithGherkinAstLocation:(GherkinAstLocation *)location;
 
 @end
 
@@ -38,4 +43,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinAstNode)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinAstNode")

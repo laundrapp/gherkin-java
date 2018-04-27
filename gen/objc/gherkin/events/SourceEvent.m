@@ -30,8 +30,8 @@ J2OBJC_FIELD_SETTER(GherkinEventsSourceEvent_Media, type_, NSString *)
 
 @implementation GherkinEventsSourceEvent
 
-- (instancetype)initWithNSString:(NSString *)uri
-                    withNSString:(NSString *)data {
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+                              withNSString:(NSString *)data {
   GherkinEventsSourceEvent_initWithNSString_withNSString_(self, uri, data);
   return self;
 }
@@ -67,7 +67,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GherkinEventsSourceEvent)
 @implementation GherkinEventsSourceEvent_Media
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinEventsSourceEvent_Media_init(self);
   return self;
 }

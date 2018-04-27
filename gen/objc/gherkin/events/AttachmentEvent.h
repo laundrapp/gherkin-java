@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinEventsAttachmentEvent
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinEventsAttachmentEvent_) && (INCLUDE_ALL_GherkinEventsAttachmentEvent || defined(INCLUDE_GherkinEventsAttachmentEvent))
 #define GherkinEventsAttachmentEvent_
 
@@ -26,12 +31,12 @@
 
 #pragma mark Public
 
-- (instancetype)initWithGherkinEventsAttachmentEvent_SourceRef:(GherkinEventsAttachmentEvent_SourceRef *)source
-                                                  withNSString:(NSString *)data;
+- (instancetype __nonnull)initWithGherkinEventsAttachmentEvent_SourceRef:(GherkinEventsAttachmentEvent_SourceRef *)source
+                                                            withNSString:(NSString *)data;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -56,12 +61,12 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsAttachmentEvent)
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)uri
-withGherkinEventsAttachmentEvent_Location:(GherkinEventsAttachmentEvent_Location *)start;
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+ withGherkinEventsAttachmentEvent_Location:(GherkinEventsAttachmentEvent_Location *)start;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -84,12 +89,12 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsAttachmentEvent_SourceRef)
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)line
-                    withInt:(jint)column;
+- (instancetype __nonnull)initWithInt:(jint)line
+                              withInt:(jint)column;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -112,7 +117,7 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsAttachmentEvent_Location)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
@@ -128,4 +133,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsAttachmentEvent_Media)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinEventsAttachmentEvent")

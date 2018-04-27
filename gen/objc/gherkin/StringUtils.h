@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinStringUtils
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinStringUtils_) && (INCLUDE_ALL_GherkinStringUtils || defined(INCLUDE_GherkinStringUtils))
 #define GherkinStringUtils_
 
@@ -24,7 +29,7 @@
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 + (NSString *)joinWithNSString:(NSString *)separator
               withJavaUtilList:(id<JavaUtilList>)items;
@@ -79,4 +84,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinStringUtils_ToString)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinStringUtils")

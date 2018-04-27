@@ -13,6 +13,11 @@
 #endif
 #undef RESTRICT_GherkinEventsSourceEvent
 
+#if __has_feature(nullability)
+#pragma clang diagnostic push
+#pragma GCC diagnostic ignored "-Wnullability-completeness"
+#endif
+
 #if !defined (GherkinEventsSourceEvent_) && (INCLUDE_ALL_GherkinEventsSourceEvent || defined(INCLUDE_GherkinEventsSourceEvent))
 #define GherkinEventsSourceEvent_
 
@@ -28,12 +33,12 @@
 
 #pragma mark Public
 
-- (instancetype)initWithNSString:(NSString *)uri
-                    withNSString:(NSString *)data;
+- (instancetype __nonnull)initWithNSString:(NSString *)uri
+                              withNSString:(NSString *)data;
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)init NS_UNAVAILABLE;
+- (instancetype __nonnull)init NS_UNAVAILABLE;
 
 @end
 
@@ -59,7 +64,7 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsSourceEvent)
 
 #pragma mark Public
 
-- (instancetype)init;
+- (instancetype __nonnull)init;
 
 @end
 
@@ -75,4 +80,8 @@ J2OBJC_TYPE_LITERAL_HEADER(GherkinEventsSourceEvent_Media)
 
 #endif
 
+
+#if __has_feature(nullability)
+#pragma clang diagnostic pop
+#endif
 #pragma pop_macro("INCLUDE_ALL_GherkinEventsSourceEvent")

@@ -17,7 +17,7 @@
 @implementation GherkinGenerateTokens
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
-- (instancetype)init {
+- (instancetype __nonnull)init {
   GherkinGenerateTokens_init(self);
   return self;
 }
