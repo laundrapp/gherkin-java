@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.public_header_files = 'gen/objc/**/*.h'
   s.header_mappings_dir = 'gen/objc'
 
-  s.dependency 'base64'
+  s.dependency 'Base64'
 end
