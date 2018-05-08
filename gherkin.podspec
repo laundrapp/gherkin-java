@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = "gherkin-java"
+  s.name             = "gherkin"
   s.version          = '5.0.0.J2ObjC2.0.5'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
   s.source           = { :git => "https://github.com/laundrapp/gherkin-java.git", :tag => "5.0.0-SNAPSHOT-J2ObjC2.0.5" }
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.public_header_files = 'gen/objc/**/*.h'
   s.header_mappings_dir = 'gen/objc'
 
-  s.dependency 'base64', :git => 'git@github.com:laundrapp/base64.git', :tag => '2.3.8-J2ObjC2.0.5'
+  s.dependency 'base64'
 end
