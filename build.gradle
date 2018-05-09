@@ -19,12 +19,20 @@ repositories {
         
      maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
      maven { url "http://repo.maven.apache.org/maven2" }
+    maven {
+        credentials {
+            username "marcus@laundrapp.com"
+            password "buck1ngh4m"
+        }
+        authentication {
+            basic(BasicAuthentication)
+        }
+        url "https://bitbucket.org/laundrapp/maven/raw/releases"
+    }
 }
 dependencies {
-    compile(group: 'io.cucumber', name: 'gherkin-jvm-deps', version:'1.0.4') {
-exclude(module: 'gson')
-exclude(module: 'base64')
-    }
+    compile group: 'net.iharder', name: 'base64', version: '2.3.8'
+    compile 'com.laundrapp:json:1.0.0'
     testCompile group: 'junit', name: 'junit', version:'4.12'
 }
 

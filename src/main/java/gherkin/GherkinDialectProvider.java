@@ -1,14 +1,21 @@
 package gherkin;
 
-import gherkin.ast.Location;
-import gherkin.deps.com.google.gson.Gson;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import gherkin.ast.Location;
+
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.util.Collections.sort;
 import static java.util.Collections.unmodifiableList;
@@ -18,12 +25,40 @@ public class GherkinDialectProvider implements IGherkinDialectProvider {
     private final String default_dialect_name;
 
     static {
-        Gson gson = new Gson();
         try {
             Reader dialects = new InputStreamReader(GherkinDialectProvider.class.getResourceAsStream("/gherkin/gherkin-languages.json"), "UTF-8");
-            DIALECTS = gson.fromJson(dialects, Map.class);
+            char[] buffer = new char[4096];
+            StringBuilder builder = new StringBuilder();
+            for(int len; (len = dialects.read(buffer))>0;) {
+                builder.append(buffer, 0, len);
+            }
+            JSONObject obj = new JSONObject(builder.toString());
+            DIALECTS = new HashMap<>();
+            Iterator<String> keys = obj.keys();
+            while(keys.hasNext()) {
+
+                String key = keys.next();
+                JSONObject node = obj.optJSONObject(key);
+                Map<String, List<String>> elements = new HashMap<>();
+
+                Set<String> innerKeys = node.keySet();
+                for(String k : innerKeys) {
+                    JSONArray values = node.getJSONArray(k);
+                    List<String> entries = new ArrayList<>();
+                    for(int i=0;i<values.length();i++) {
+                        entries.add(values.getString(i));
+                    }
+                    elements.put(k, entries);
+                }
+
+                DIALECTS.put(key, elements);
+            }
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
+        }catch(JSONException je) {
+            throw new RuntimeException(je);
+        } catch (IOException ioe) {
+            throw new RuntimeException(ioe);
         }
     }
 
