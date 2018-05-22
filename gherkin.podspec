@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = "gherkin"
-  s.version          = '5.0.0.J2ObjC2.1.1'
+  s.version          = '5.0.1.J2ObjC2.1.1'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
-  s.source           = { :git => "https://github.com/laundrapp/gherkin-java.git", :tag => "5.0.0-SNAPSHOT-J2ObjC2.0.5" }
+  s.source           = { :git => "https://github.com/laundrapp/gherkin-java.git", :tag => "5.0.1-J2ObjC2.1.1" }
   s.summary 	       = "Converted to Objective-C using J2ObjC."
   s.homepage         = "https://github.com/cucumber/gherkin-java"
 
@@ -11,7 +11,8 @@ Pod::Spec.new do |s|
 
   s.source_files = 'gen/objc/**/*.{h,m}'
   s.public_header_files = 'gen/objc/**/*.h'
+  s.resources = 'src/main/resources/*'
   s.header_mappings_dir = 'gen/objc'
 
-  s.dependency 'Base64', '2.3.8-j2obj2.1.1'
+  s.dependency 'gson', '2.3.1.J2ObjC2.1.1'
 end

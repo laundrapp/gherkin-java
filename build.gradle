@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 group = 'io.cucumber'
-version = '5.0.1-SNAPSHOT'
+version = '5.0.1'
 
 description = """Gherkin"""
 
@@ -52,3 +52,83 @@ task translateJava(type:Exec) {
     args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
     args inputs.files
 }
+
+
+apply from: './common_methods.gradle'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            credentials {
+                username LAUNDRAPP_BB_USERNAME
+                password LAUNDRAPP_BB_PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url LAUNDRAPP_BB_DISTRIBUTION
+        }
+        maven {
+            credentials {
+                username LAUNDRAPP_BB_USERNAME
+                password LAUNDRAPP_BB_PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url LAUNDRAPP_BB_MAVEN
+        }
+
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+    }
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+
+    repositories {
+
+        maven {
+            credentials {
+                username LAUNDRAPP_BB_USERNAME
+                password LAUNDRAPP_BB_PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url LAUNDRAPP_BB_DISTRIBUTION
+        }
+        maven {
+            credentials {
+                username LAUNDRAPP_BB_USERNAME
+                password LAUNDRAPP_BB_PASSWORD
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+            url = LAUNDRAPP_BB_MAVEN
+        }
+        maven { url 'https://maven.google.com' }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives sourcesJar
+}
+
+apply from: './deploy.gradle'
