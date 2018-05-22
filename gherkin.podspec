@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'gen/objc/**/*.{h,m}'
   s.public_header_files = 'gen/objc/**/*.h'
+  s.resources = 'src/main/resources/*'
   s.header_mappings_dir = 'gen/objc'
 
   s.dependency 'Base64', '2.3.8-j2obj2.1.1'
