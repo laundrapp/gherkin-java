@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
   s.resources = 'src/main/resources/*'
   s.header_mappings_dir = 'gen/objc'
 
-  s.dependency 'gson', '2.3.1.J2ObjC2.1.1'
+  s.dependency 'gson', '2.3.1.J2ObjC2.0.5'
 end
