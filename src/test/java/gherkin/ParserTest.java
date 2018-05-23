@@ -1,8 +1,8 @@
 package gherkin;
 
 import gherkin.ast.GherkinDocument;
-import gherkin.deps.com.google.gson.Gson;
-import gherkin.deps.com.google.gson.JsonParser;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import gherkin.pickles.Compiler;
 import gherkin.pickles.Pickle;
 import org.junit.Test;

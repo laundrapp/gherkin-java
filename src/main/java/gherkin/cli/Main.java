@@ -1,8 +1,8 @@
 package gherkin.cli;
 
 import gherkin.stream.Stdio;
-import gherkin.deps.com.google.gson.Gson;
-import gherkin.deps.com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import gherkin.events.CucumberEvent;
 import gherkin.events.SourceEvent;
 import gherkin.stream.GherkinEvents;

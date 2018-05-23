@@ -5,11 +5,11 @@
 
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
+#include "com/google/gson/Gson.h"
 #include "gherkin/GherkinDialect.h"
 #include "gherkin/GherkinDialectProvider.h"
 #include "gherkin/ParserException.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/deps/com/google/gson/Gson.h"
 #include "java/io/InputStream.h"
 #include "java/io/InputStreamReader.h"
 #include "java/io/Reader.h"
@@ -78,7 +78,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (void)initialize {
   if (self == [GherkinGherkinDialectProvider class]) {
     {
-      GherkinDepsComGoogleGsonGson *gson = create_GherkinDepsComGoogleGsonGson_init();
+      ComGoogleGsonGson *gson = create_ComGoogleGsonGson_init();
       @try {
         JavaIoReader *dialects = create_JavaIoInputStreamReader_initWithJavaIoInputStream_withNSString_([GherkinGherkinDialectProvider_class_() getResourceAsStream:@"/gherkin/gherkin-languages.json"], @"UTF-8");
         JreStrongAssign(&GherkinGherkinDialectProvider_DIALECTS, [gson fromJsonWithJavaIoReader:dialects withIOSClass:JavaUtilMap_class_()]);
