@@ -1,6 +1,6 @@
 package gherkin.ast;
 
-public class TableCell extends Node {
+public class TableCell extends AbstractNode {
     private final String value;
 
     public TableCell(Location location, String value) {

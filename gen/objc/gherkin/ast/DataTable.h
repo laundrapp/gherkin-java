@@ -21,14 +21,14 @@
 #if !defined (GHKADataTable_) && (INCLUDE_ALL_GherkinAstDataTable || defined(INCLUDE_GHKADataTable))
 #define GHKADataTable_
 
-#define RESTRICT_GherkinAstNode 1
-#define INCLUDE_GHKANode 1
-#include "gherkin/ast/Node.h"
+#define RESTRICT_GherkinAstAbstractNode 1
+#define INCLUDE_GHKAAbstractNode 1
+#include "gherkin/ast/AbstractNode.h"
 
 @class GHKALocation;
 @protocol JavaUtilList;
 
-@interface GHKADataTable : GHKANode
+@interface GHKADataTable : GHKAAbstractNode
 
 #pragma mark Public
 

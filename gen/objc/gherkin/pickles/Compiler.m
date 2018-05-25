@@ -7,6 +7,7 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "gherkin/SymbolCounter.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Background.h"
 #include "gherkin/ast/DataTable.h"
 #include "gherkin/ast/DocString.h"
@@ -14,7 +15,6 @@
 #include "gherkin/ast/Feature.h"
 #include "gherkin/ast/GherkinDocument.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/ast/Node.h"
 #include "gherkin/ast/Scenario.h"
 #include "gherkin/ast/ScenarioDefinition.h"
 #include "gherkin/ast/ScenarioOutline.h"
@@ -41,9 +41,9 @@ __attribute__((unused)) static void GHKCompiler_compileScenarioWithJavaUtilList_
 
 __attribute__((unused)) static void GHKCompiler_compileScenarioOutlineWithJavaUtilList_withJavaUtilList_withGHKAScenarioOutline_withJavaUtilList_withNSString_(GHKCompiler *self, id<JavaUtilList> pickles, id<JavaUtilList> backgroundSteps, GHKAScenarioOutline *scenarioOutline, id<JavaUtilList> featureTags, NSString *language);
 
-__attribute__((unused)) static id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKANode_(GHKCompiler *self, GHKANode *argument);
+__attribute__((unused)) static id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_(GHKCompiler *self, GHKAAbstractNode *argument);
 
-__attribute__((unused)) static id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKANode_withJavaUtilList_withJavaUtilList_(GHKCompiler *self, GHKANode *argument, id<JavaUtilList> variableCells, id<JavaUtilList> valueCells);
+__attribute__((unused)) static id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_withJavaUtilList_withJavaUtilList_(GHKCompiler *self, GHKAAbstractNode *argument, id<JavaUtilList> variableCells, id<JavaUtilList> valueCells);
 
 __attribute__((unused)) static id<JavaUtilList> GHKCompiler_pickleStepsWithGHKAScenarioDefinition_(GHKCompiler *self, GHKAScenarioDefinition *scenarioDefinition);
 
@@ -130,7 +130,7 @@ void GHKCompiler_compileScenarioOutlineWithJavaUtilList_withJavaUtilList_withGHK
       [tags addAllWithJavaUtilCollection:[examples getTags]];
       for (GHKAStep * __strong scenarioOutlineStep in nil_chk([scenarioOutline getSteps])) {
         NSString *stepText = GHKCompiler_interpolateWithNSString_withJavaUtilList_withJavaUtilList_(self, [((GHKAStep *) nil_chk(scenarioOutlineStep)) getText], variableCells, valueCells);
-        GHKPickleStep *pickleStep = create_GHKPickleStep_initWithNSString_withJavaUtilList_withJavaUtilList_(stepText, GHKCompiler_createPickleArgumentsWithGHKANode_withJavaUtilList_withJavaUtilList_(self, [scenarioOutlineStep getArgument], variableCells, valueCells), JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray arrayWithObjects:(id[]){ GHKCompiler_pickleLocationWithGHKALocation_(self, [values getLocation]), GHKCompiler_pickleStepLocationWithGHKAStep_(self, scenarioOutlineStep) } count:2 type:GHKPickleLocation_class_()]));
+        GHKPickleStep *pickleStep = create_GHKPickleStep_initWithNSString_withJavaUtilList_withJavaUtilList_(stepText, GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_withJavaUtilList_withJavaUtilList_(self, [scenarioOutlineStep getArgument], variableCells, valueCells), JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray arrayWithObjects:(id[]){ GHKCompiler_pickleLocationWithGHKALocation_(self, [values getLocation]), GHKCompiler_pickleStepLocationWithGHKAStep_(self, scenarioOutlineStep) } count:2 type:GHKPickleLocation_class_()]));
         [steps addWithId:pickleStep];
       }
       GHKPickle *pickle = create_GHKPickle_initWithNSString_withNSString_withJavaUtilList_withJavaUtilList_withJavaUtilList_(GHKCompiler_interpolateWithNSString_withJavaUtilList_withJavaUtilList_(self, [scenarioOutline getName], variableCells, valueCells), language, steps, GHKCompiler_pickleTagsWithJavaUtilList_(self, tags), JavaUtilArrays_asListWithNSObjectArray_([IOSObjectArray arrayWithObjects:(id[]){ GHKCompiler_pickleLocationWithGHKALocation_(self, [values getLocation]), GHKCompiler_pickleLocationWithGHKALocation_(self, [scenarioOutline getLocation]) } count:2 type:GHKPickleLocation_class_()]));
@@ -139,12 +139,12 @@ void GHKCompiler_compileScenarioOutlineWithJavaUtilList_withJavaUtilList_withGHK
   }
 }
 
-id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKANode_(GHKCompiler *self, GHKANode *argument) {
+id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_(GHKCompiler *self, GHKAAbstractNode *argument) {
   id<JavaUtilList> noCells = JavaUtilCollections_emptyList();
-  return GHKCompiler_createPickleArgumentsWithGHKANode_withJavaUtilList_withJavaUtilList_(self, argument, noCells, noCells);
+  return GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_withJavaUtilList_withJavaUtilList_(self, argument, noCells, noCells);
 }
 
-id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKANode_withJavaUtilList_withJavaUtilList_(GHKCompiler *self, GHKANode *argument, id<JavaUtilList> variableCells, id<JavaUtilList> valueCells) {
+id<JavaUtilList> GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_withJavaUtilList_withJavaUtilList_(GHKCompiler *self, GHKAAbstractNode *argument, id<JavaUtilList> variableCells, id<JavaUtilList> valueCells) {
   id<JavaUtilList> result = create_JavaUtilArrayList_init();
   if (argument == nil) return result;
   if ([argument isKindOfClass:[GHKADataTable class]]) {
@@ -180,7 +180,7 @@ id<JavaUtilList> GHKCompiler_pickleStepsWithGHKAScenarioDefinition_(GHKCompiler 
 }
 
 GHKPickleStep *GHKCompiler_pickleStepWithGHKAStep_(GHKCompiler *self, GHKAStep *step) {
-  return create_GHKPickleStep_initWithNSString_withJavaUtilList_withJavaUtilList_([((GHKAStep *) nil_chk(step)) getText], GHKCompiler_createPickleArgumentsWithGHKANode_(self, [step getArgument]), JavaUtilCollections_singletonListWithId_(GHKCompiler_pickleStepLocationWithGHKAStep_(self, step)));
+  return create_GHKPickleStep_initWithNSString_withJavaUtilList_withJavaUtilList_([((GHKAStep *) nil_chk(step)) getText], GHKCompiler_createPickleArgumentsWithGHKAAbstractNode_(self, [step getArgument]), JavaUtilCollections_singletonListWithId_(GHKCompiler_pickleStepLocationWithGHKAStep_(self, step)));
 }
 
 NSString *GHKCompiler_interpolateWithNSString_withJavaUtilList_withJavaUtilList_(GHKCompiler *self, NSString *name, id<JavaUtilList> variableCells, id<JavaUtilList> valueCells) {

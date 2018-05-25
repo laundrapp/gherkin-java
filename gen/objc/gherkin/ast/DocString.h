@@ -21,13 +21,13 @@
 #if !defined (GHKADocString_) && (INCLUDE_ALL_GherkinAstDocString || defined(INCLUDE_GHKADocString))
 #define GHKADocString_
 
-#define RESTRICT_GherkinAstNode 1
-#define INCLUDE_GHKANode 1
-#include "gherkin/ast/Node.h"
+#define RESTRICT_GherkinAstAbstractNode 1
+#define INCLUDE_GHKAAbstractNode 1
+#include "gherkin/ast/AbstractNode.h"
 
 @class GHKALocation;
 
-@interface GHKADocString : GHKANode
+@interface GHKADocString : GHKAAbstractNode
 
 #pragma mark Public
 

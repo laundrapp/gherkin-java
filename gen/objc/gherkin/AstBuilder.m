@@ -12,6 +12,7 @@
 #include "gherkin/ParserException.h"
 #include "gherkin/StringUtils.h"
 #include "gherkin/Token.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Background.h"
 #include "gherkin/ast/Comment.h"
 #include "gherkin/ast/DataTable.h"
@@ -20,7 +21,6 @@
 #include "gherkin/ast/Feature.h"
 #include "gherkin/ast/GherkinDocument.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/ast/Node.h"
 #include "gherkin/ast/Scenario.h"
 #include "gherkin/ast/ScenarioOutline.h"
 #include "gherkin/ast/Step.h"
@@ -146,11 +146,11 @@ id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNo
     case GHKParser_RuleType_Enum_Step:
     {
       GHKToken *stepLine = [node getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, StepLine)];
-      GHKANode *stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DataTable) withId:nil];
+      GHKAAbstractNode *stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DataTable) withId:nil];
       if (stepArg == nil) {
         stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DocString) withId:nil];
       }
-      return create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, stepLine, 0), ((GHKToken *) nil_chk(stepLine))->matchedKeyword_, stepLine->matchedText_, stepArg);
+      return create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, stepLine, 0), ((GHKToken *) nil_chk(stepLine))->matchedKeyword_, stepLine->matchedText_, stepArg);
     }
     case GHKParser_RuleType_Enum_DocString:
     {

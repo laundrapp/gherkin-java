@@ -21,14 +21,14 @@
 #if !defined (GHKAFeature_) && (INCLUDE_ALL_GherkinAstFeature || defined(INCLUDE_GHKAFeature))
 #define GHKAFeature_
 
-#define RESTRICT_GherkinAstNode 1
-#define INCLUDE_GHKANode 1
-#include "gherkin/ast/Node.h"
+#define RESTRICT_GherkinAstAbstractNode 1
+#define INCLUDE_GHKAAbstractNode 1
+#include "gherkin/ast/AbstractNode.h"
 
 @class GHKALocation;
 @protocol JavaUtilList;
 
-@interface GHKAFeature : GHKANode
+@interface GHKAFeature : GHKAAbstractNode
 
 #pragma mark Public
 

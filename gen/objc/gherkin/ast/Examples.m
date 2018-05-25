@@ -4,9 +4,9 @@
 //
 
 #include "J2ObjC_source.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Examples.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/ast/Node.h"
 #include "gherkin/ast/TableRow.h"
 #include "java/util/Collections.h"
 #include "java/util/List.h"
@@ -80,7 +80,7 @@ J2OBJC_FIELD_SETTER(GHKAExamples, tableBody_, id<JavaUtilList>)
 @end
 
 void GHKAExamples_initWithGHKALocation_withJavaUtilList_withNSString_withNSString_withNSString_withGHKATableRow_withJavaUtilList_(GHKAExamples *self, GHKALocation *location, id<JavaUtilList> tags, NSString *keyword, NSString *name, NSString *description_, GHKATableRow *tableHeader, id<JavaUtilList> tableBody) {
-  GHKANode_initWithGHKALocation_(self, location);
+  GHKAAbstractNode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->tags_, JavaUtilCollections_unmodifiableListWithJavaUtilList_(tags));
   JreStrongAssign(&self->keyword_, keyword);
   JreStrongAssign(&self->name_, name);

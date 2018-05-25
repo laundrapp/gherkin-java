@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public class Feature extends Node {
+public class Feature extends AbstractNode {
     private final List<Tag> tags;
     private final String language;
     private final String keyword;

@@ -8,7 +8,7 @@ import gherkin.ast.Examples;
 import gherkin.ast.Feature;
 import gherkin.ast.GherkinDocument;
 import gherkin.ast.Location;
-import gherkin.ast.Node;
+import gherkin.ast.AbstractNode;
 import gherkin.ast.Scenario;
 import gherkin.ast.ScenarioDefinition;
 import gherkin.ast.ScenarioOutline;
@@ -73,7 +73,7 @@ public class AstBuilder implements Builder<GherkinDocument> {
         switch (node.ruleType) {
             case Step: {
                 Token stepLine = node.getToken(TokenType.StepLine);
-                Node stepArg = node.getSingle(RuleType.DataTable, null);
+                AbstractNode stepArg = node.getSingle(RuleType.DataTable, null);
                 if (stepArg == null) {
                     stepArg = node.getSingle(RuleType.DocString, null);
                 }

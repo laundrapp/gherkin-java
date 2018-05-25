@@ -4,8 +4,8 @@
 //
 
 #include "J2ObjC_source.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/ast/Node.h"
 #include "gherkin/ast/Tag.h"
 
 @interface GHKATag () {
@@ -37,7 +37,7 @@ J2OBJC_FIELD_SETTER(GHKATag, name_, NSString *)
 @end
 
 void GHKATag_initWithGHKALocation_withNSString_(GHKATag *self, GHKALocation *location, NSString *name) {
-  GHKANode_initWithGHKALocation_(self, location);
+  GHKAAbstractNode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->name_, name);
 }
 

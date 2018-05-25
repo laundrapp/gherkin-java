@@ -1,6 +1,6 @@
 package gherkin.ast;
 
-public class DocString extends Node {
+public class DocString extends AbstractNode {
     private final String contentType;
     private final String content;
 

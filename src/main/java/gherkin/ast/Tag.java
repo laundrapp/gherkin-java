@@ -1,6 +1,6 @@
 package gherkin.ast;
 
-public class Tag extends Node {
+public class Tag extends AbstractNode {
     private final String name;
 
     public Tag(Location location, String name) {

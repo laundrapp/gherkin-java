@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public class DataTable extends Node {
+public class DataTable extends AbstractNode {
     private final List<TableRow> rows;
 
     public DataTable(List<TableRow> rows) {

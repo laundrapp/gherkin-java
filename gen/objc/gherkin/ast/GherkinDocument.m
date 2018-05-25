@@ -4,9 +4,9 @@
 //
 
 #include "J2ObjC_source.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Feature.h"
 #include "gherkin/ast/GherkinDocument.h"
-#include "gherkin/ast/Node.h"
 #include "java/util/Collections.h"
 #include "java/util/List.h"
 
@@ -46,7 +46,7 @@ J2OBJC_FIELD_SETTER(GHKAGherkinDocument, comments_, id<JavaUtilList>)
 @end
 
 void GHKAGherkinDocument_initWithGHKAFeature_withJavaUtilList_(GHKAGherkinDocument *self, GHKAFeature *feature, id<JavaUtilList> comments) {
-  GHKANode_initWithGHKALocation_(self, nil);
+  GHKAAbstractNode_initWithGHKALocation_(self, nil);
   JreStrongAssign(&self->feature_, feature);
   JreStrongAssign(&self->comments_, JavaUtilCollections_unmodifiableListWithJavaUtilList_(comments));
 }

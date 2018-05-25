@@ -4,8 +4,8 @@
 //
 
 #include "J2ObjC_source.h"
+#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Location.h"
-#include "gherkin/ast/Node.h"
 #include "gherkin/ast/TableCell.h"
 
 @interface GHKATableCell () {
@@ -37,7 +37,7 @@ J2OBJC_FIELD_SETTER(GHKATableCell, value_, NSString *)
 @end
 
 void GHKATableCell_initWithGHKALocation_withNSString_(GHKATableCell *self, GHKALocation *location, NSString *value) {
-  GHKANode_initWithGHKALocation_(self, location);
+  GHKAAbstractNode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->value_, value);
 }
 

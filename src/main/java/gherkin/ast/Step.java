@@ -1,11 +1,11 @@
 package gherkin.ast;
 
-public class Step extends Node {
+public class Step extends AbstractNode {
     private final String keyword;
     private final String text;
-    private final Node argument;
+    private final AbstractNode argument;
 
-    public Step(Location location, String keyword, String text, Node argument) {
+    public Step(Location location, String keyword, String text, AbstractNode argument) {
         super(location);
         this.keyword = keyword;
         this.text = text;
@@ -20,7 +20,7 @@ public class Step extends Node {
         return keyword;
     }
 
-    public Node getArgument() {
+    public AbstractNode getArgument() {
         return argument;
     }
 

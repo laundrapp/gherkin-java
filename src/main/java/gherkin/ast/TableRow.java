@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public class TableRow extends Node {
+public class TableRow extends AbstractNode {
     private final List<TableCell> cells;
 
     public TableRow(Location location, List<TableCell> cells) {

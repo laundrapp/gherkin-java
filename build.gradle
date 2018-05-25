@@ -16,11 +16,24 @@ configurations.all {
 }
 
 repositories {
-        
+
      maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
      maven { url "http://repo.maven.apache.org/maven2" }
+
+    maven {
+        credentials {
+            username LAUNDRAPP_BB_USERNAME
+            password LAUNDRAPP_BB_PASSWORD
+        }
+        authentication {
+            basic(BasicAuthentication)
+        }
+        url LAUNDRAPP_BB_DISTRIBUTION
+    }
 }
+
 dependencies {
+    compile 'com.google.j2objc:j2objc_annotations:0.9.3'
     compile(group: 'io.cucumber', name: 'gherkin-jvm-deps', version:'1.0.4') {
 exclude(module: 'gson')
 exclude(module: 'base64')

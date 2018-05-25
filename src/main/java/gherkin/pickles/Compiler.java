@@ -8,7 +8,7 @@ import gherkin.ast.Examples;
 import gherkin.ast.Feature;
 import gherkin.ast.GherkinDocument;
 import gherkin.ast.Location;
-import gherkin.ast.Node;
+import gherkin.ast.AbstractNode;
 import gherkin.ast.Scenario;
 import gherkin.ast.ScenarioDefinition;
 import gherkin.ast.ScenarioOutline;
@@ -121,12 +121,12 @@ public class Compiler {
         }
     }
 
-    private List<Argument> createPickleArguments(Node argument) {
+    private List<Argument> createPickleArguments(AbstractNode argument) {
         List<TableCell> noCells = emptyList();
         return createPickleArguments(argument, noCells, noCells);
     }
 
-    private List<Argument> createPickleArguments(Node argument, List<TableCell> variableCells, List<TableCell> valueCells) {
+    private List<Argument> createPickleArguments(AbstractNode argument, List<TableCell> variableCells, List<TableCell> valueCells) {
         List<Argument> result = new ArrayList<>();
         if (argument == null) return result;
         if (argument instanceof DataTable) {
