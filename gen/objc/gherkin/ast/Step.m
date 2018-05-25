@@ -4,30 +4,30 @@
 //
 
 #include "J2ObjC_source.h"
-#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Location.h"
+#include "gherkin/ast/Node.h"
 #include "gherkin/ast/Step.h"
 
 @interface GHKAStep () {
  @public
   NSString *keyword_;
   NSString *text_;
-  GHKAAbstractNode *argument_;
+  GHKANode *argument_;
 }
 
 @end
 
 J2OBJC_FIELD_SETTER(GHKAStep, keyword_, NSString *)
 J2OBJC_FIELD_SETTER(GHKAStep, text_, NSString *)
-J2OBJC_FIELD_SETTER(GHKAStep, argument_, GHKAAbstractNode *)
+J2OBJC_FIELD_SETTER(GHKAStep, argument_, GHKANode *)
 
 @implementation GHKAStep
 
 - (instancetype __nonnull)initWithGHKALocation:(GHKALocation *)location
                                   withNSString:(NSString *)keyword
                                   withNSString:(NSString *)text
-                          withGHKAAbstractNode:(GHKAAbstractNode *)argument {
-  GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(self, location, keyword, text, argument);
+                                  withGHKANode:(GHKANode *)argument {
+  GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(self, location, keyword, text, argument);
   return self;
 }
 
@@ -39,7 +39,7 @@ J2OBJC_FIELD_SETTER(GHKAStep, argument_, GHKAAbstractNode *)
   return keyword_;
 }
 
-- (GHKAAbstractNode *)getArgument {
+- (GHKANode *)getArgument {
   return argument_;
 }
 
@@ -52,19 +52,19 @@ J2OBJC_FIELD_SETTER(GHKAStep, argument_, GHKAAbstractNode *)
 
 @end
 
-void GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKAStep *self, GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument) {
-  GHKAAbstractNode_initWithGHKALocation_(self, location);
+void GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKAStep *self, GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument) {
+  GHKANode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->keyword_, keyword);
   JreStrongAssign(&self->text_, text);
   JreStrongAssign(&self->argument_, argument);
 }
 
-GHKAStep *new_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument) {
-  J2OBJC_NEW_IMPL(GHKAStep, initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_, location, keyword, text, argument)
+GHKAStep *new_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument) {
+  J2OBJC_NEW_IMPL(GHKAStep, initWithGHKALocation_withNSString_withNSString_withGHKANode_, location, keyword, text, argument)
 }
 
-GHKAStep *create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument) {
-  J2OBJC_CREATE_IMPL(GHKAStep, initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_, location, keyword, text, argument)
+GHKAStep *create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument) {
+  J2OBJC_CREATE_IMPL(GHKAStep, initWithGHKALocation_withNSString_withNSString_withGHKANode_, location, keyword, text, argument)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(GHKAStep)

@@ -4,8 +4,8 @@
 //
 
 #include "J2ObjC_source.h"
-#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Location.h"
+#include "gherkin/ast/Node.h"
 #include "gherkin/ast/ScenarioDefinition.h"
 #include "java/util/Collections.h"
 #include "java/util/List.h"
@@ -63,7 +63,7 @@ J2OBJC_FIELD_SETTER(GHKAScenarioDefinition, steps_, id<JavaUtilList>)
 @end
 
 void GHKAScenarioDefinition_initWithGHKALocation_withNSString_withNSString_withNSString_withJavaUtilList_(GHKAScenarioDefinition *self, GHKALocation *location, NSString *keyword, NSString *name, NSString *description_, id<JavaUtilList> steps) {
-  GHKAAbstractNode_initWithGHKALocation_(self, location);
+  GHKANode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->keyword_, keyword);
   JreStrongAssign(&self->name_, name);
   JreStrongAssign(&self->description__, description_);

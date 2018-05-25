@@ -4,9 +4,9 @@
 //
 
 #include "J2ObjC_source.h"
-#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/DocString.h"
 #include "gherkin/ast/Location.h"
+#include "gherkin/ast/Node.h"
 
 @interface GHKADocString () {
  @public
@@ -45,7 +45,7 @@ J2OBJC_FIELD_SETTER(GHKADocString, content_, NSString *)
 @end
 
 void GHKADocString_initWithGHKALocation_withNSString_withNSString_(GHKADocString *self, GHKALocation *location, NSString *contentType, NSString *content) {
-  GHKAAbstractNode_initWithGHKALocation_(self, location);
+  GHKANode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->contentType_, contentType);
   JreStrongAssign(&self->content_, content);
 }

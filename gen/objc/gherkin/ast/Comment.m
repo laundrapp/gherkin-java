@@ -4,9 +4,9 @@
 //
 
 #include "J2ObjC_source.h"
-#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Comment.h"
 #include "gherkin/ast/Location.h"
+#include "gherkin/ast/Node.h"
 
 @interface GHKAComment () {
  @public
@@ -37,7 +37,7 @@ J2OBJC_FIELD_SETTER(GHKAComment, text_, NSString *)
 @end
 
 void GHKAComment_initWithGHKALocation_withNSString_(GHKAComment *self, GHKALocation *location, NSString *text) {
-  GHKAAbstractNode_initWithGHKALocation_(self, location);
+  GHKANode_initWithGHKALocation_(self, location);
   JreStrongAssign(&self->text_, text);
 }
 

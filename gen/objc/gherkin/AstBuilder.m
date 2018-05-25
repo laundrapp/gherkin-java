@@ -5,14 +5,13 @@
 
 #include "J2ObjC_source.h"
 #include "gherkin/AstBuilder.h"
-#include "gherkin/AstNode.h"
+#include "gherkin/GherkinAstNode.h"
 #include "gherkin/GherkinDialect.h"
 #include "gherkin/GherkinLineSpan.h"
 #include "gherkin/Parser.h"
 #include "gherkin/ParserException.h"
 #include "gherkin/StringUtils.h"
 #include "gherkin/Token.h"
-#include "gherkin/ast/AbstractNode.h"
 #include "gherkin/ast/Background.h"
 #include "gherkin/ast/Comment.h"
 #include "gherkin/ast/DataTable.h"
@@ -21,6 +20,7 @@
 #include "gherkin/ast/Feature.h"
 #include "gherkin/ast/GherkinDocument.h"
 #include "gherkin/ast/Location.h"
+#include "gherkin/ast/Node.h"
 #include "gherkin/ast/Scenario.h"
 #include "gherkin/ast/ScenarioOutline.h"
 #include "gherkin/ast/Step.h"
@@ -45,23 +45,23 @@
 J2OBJC_FIELD_SETTER(GHKAstBuilder, stack_, id<JavaUtilDeque>)
 J2OBJC_FIELD_SETTER(GHKAstBuilder, comments_, id<JavaUtilList>)
 
-__attribute__((unused)) static GHKAstNode *GHKAstBuilder_currentNode(GHKAstBuilder *self);
+__attribute__((unused)) static GHKGherkinAstNode *GHKAstBuilder_currentNode(GHKAstBuilder *self);
 
-__attribute__((unused)) static id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node);
+__attribute__((unused)) static id GHKAstBuilder_getTransformedNodeWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node);
 
-__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getTableRowsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node);
+__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getTableRowsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node);
 
 __attribute__((unused)) static void GHKAstBuilder_ensureCellCountWithJavaUtilList_(GHKAstBuilder *self, id<JavaUtilList> rows);
 
 __attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getCellsWithGHKToken_(GHKAstBuilder *self, GHKToken *token);
 
-__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getStepsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node);
+__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getStepsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node);
 
 __attribute__((unused)) static GHKALocation *GHKAstBuilder_getLocationWithGHKToken_withInt_(GHKAstBuilder *self, GHKToken *token, jint column);
 
-__attribute__((unused)) static NSString *GHKAstBuilder_getDescriptionWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node);
+__attribute__((unused)) static NSString *GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node);
 
-__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getTagsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node);
+__attribute__((unused)) static id<JavaUtilList> GHKAstBuilder_getTagsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node);
 
 @interface GHKAstBuilder_1 : NSObject < GHKStringUtils_ToString >
 
@@ -88,7 +88,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)reset {
   JreStrongAssignAndConsume(&stack_, new_JavaUtilArrayDeque_init());
-  [stack_ pushWithId:create_GHKAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, None))];
+  [stack_ pushWithId:create_GHKGherkinAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, None))];
   JreStrongAssignAndConsume(&comments_, new_JavaUtilArrayList_init());
 }
 
@@ -98,22 +98,22 @@ J2OBJC_IGNORE_DESIGNATED_END
     [((id<JavaUtilList>) nil_chk(comments_)) addWithId:create_GHKAComment_initWithGHKALocation_withNSString_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, token, 0), token->matchedText_)];
   }
   else {
-    [((GHKAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) addWithGHKParser_RuleType:ruleType withId:token];
+    [((GHKGherkinAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) addWithGHKParser_RuleType:ruleType withId:token];
   }
 }
 
 - (void)startRuleWithGHKParser_RuleType:(GHKParser_RuleType *)ruleType {
-  [((id<JavaUtilDeque>) nil_chk(stack_)) pushWithId:create_GHKAstNode_initWithGHKParser_RuleType_(ruleType)];
+  [((id<JavaUtilDeque>) nil_chk(stack_)) pushWithId:create_GHKGherkinAstNode_initWithGHKParser_RuleType_(ruleType)];
 }
 
 - (void)endRuleWithGHKParser_RuleType:(GHKParser_RuleType *)ruleType {
-  GHKAstNode *node = [((id<JavaUtilDeque>) nil_chk(stack_)) pop];
-  id transformedNode = GHKAstBuilder_getTransformedNodeWithGHKAstNode_(self, node);
-  [((GHKAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) addWithGHKParser_RuleType:((GHKAstNode *) nil_chk(node))->ruleType_ withId:transformedNode];
+  GHKGherkinAstNode *node = [((id<JavaUtilDeque>) nil_chk(stack_)) pop];
+  id transformedNode = GHKAstBuilder_getTransformedNodeWithGHKGherkinAstNode_(self, node);
+  [((GHKGherkinAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) addWithGHKParser_RuleType:((GHKGherkinAstNode *) nil_chk(node))->ruleType_ withId:transformedNode];
 }
 
 - (GHKAGherkinDocument *)getResult {
-  return [((GHKAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, GherkinDocument) withId:nil];
+  return [((GHKGherkinAstNode *) nil_chk(GHKAstBuilder_currentNode(self))) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, GherkinDocument) withId:nil];
 }
 
 - (void)dealloc {
@@ -137,20 +137,20 @@ GHKAstBuilder *create_GHKAstBuilder_init() {
   J2OBJC_CREATE_IMPL(GHKAstBuilder, init)
 }
 
-GHKAstNode *GHKAstBuilder_currentNode(GHKAstBuilder *self) {
+GHKGherkinAstNode *GHKAstBuilder_currentNode(GHKAstBuilder *self) {
   return [((id<JavaUtilDeque>) nil_chk(self->stack_)) peek];
 }
 
-id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node) {
-  switch ([((GHKAstNode *) nil_chk(node))->ruleType_ ordinal]) {
+id GHKAstBuilder_getTransformedNodeWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node) {
+  switch ([((GHKGherkinAstNode *) nil_chk(node))->ruleType_ ordinal]) {
     case GHKParser_RuleType_Enum_Step:
     {
       GHKToken *stepLine = [node getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, StepLine)];
-      GHKAAbstractNode *stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DataTable) withId:nil];
+      GHKANode *stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DataTable) withId:nil];
       if (stepArg == nil) {
         stepArg = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, DocString) withId:nil];
       }
-      return create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, stepLine, 0), ((GHKToken *) nil_chk(stepLine))->matchedKeyword_, stepLine->matchedText_, stepArg);
+      return create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, stepLine, 0), ((GHKToken *) nil_chk(stepLine))->matchedKeyword_, stepLine->matchedText_, stepArg);
     }
     case GHKParser_RuleType_Enum_DocString:
     {
@@ -168,44 +168,44 @@ id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNo
     }
     case GHKParser_RuleType_Enum_DataTable:
     {
-      id<JavaUtilList> rows = GHKAstBuilder_getTableRowsWithGHKAstNode_(self, node);
+      id<JavaUtilList> rows = GHKAstBuilder_getTableRowsWithGHKGherkinAstNode_(self, node);
       return create_GHKADataTable_initWithJavaUtilList_(rows);
     }
     case GHKParser_RuleType_Enum_Background:
     {
       GHKToken *backgroundLine = [node getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, BackgroundLine)];
-      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKAstNode_(self, node);
-      id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKAstNode_(self, node);
+      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(self, node);
+      id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKGherkinAstNode_(self, node);
       return create_GHKABackground_initWithGHKALocation_withNSString_withNSString_withNSString_withJavaUtilList_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, backgroundLine, 0), ((GHKToken *) nil_chk(backgroundLine))->matchedKeyword_, backgroundLine->matchedText_, description_, steps);
     }
     case GHKParser_RuleType_Enum_Scenario_Definition:
     {
-      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKAstNode_(self, node);
-      GHKAstNode *scenarioNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Scenario) withId:nil];
+      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKGherkinAstNode_(self, node);
+      GHKGherkinAstNode *scenarioNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Scenario) withId:nil];
       if (scenarioNode != nil) {
         GHKToken *scenarioLine = [scenarioNode getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, ScenarioLine)];
-        NSString *description_ = GHKAstBuilder_getDescriptionWithGHKAstNode_(self, scenarioNode);
-        id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKAstNode_(self, scenarioNode);
+        NSString *description_ = GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(self, scenarioNode);
+        id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKGherkinAstNode_(self, scenarioNode);
         return create_GHKAScenario_initWithJavaUtilList_withGHKALocation_withNSString_withNSString_withNSString_withJavaUtilList_(tags, GHKAstBuilder_getLocationWithGHKToken_withInt_(self, scenarioLine, 0), ((GHKToken *) nil_chk(scenarioLine))->matchedKeyword_, scenarioLine->matchedText_, description_, steps);
       }
       else {
-        GHKAstNode *scenarioOutlineNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, ScenarioOutline) withId:nil];
+        GHKGherkinAstNode *scenarioOutlineNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, ScenarioOutline) withId:nil];
         if (scenarioOutlineNode == nil) {
           @throw create_JavaLangRuntimeException_initWithNSString_(@"Internal grammar error");
         }
         GHKToken *scenarioOutlineLine = [scenarioOutlineNode getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, ScenarioOutlineLine)];
-        NSString *description_ = GHKAstBuilder_getDescriptionWithGHKAstNode_(self, scenarioOutlineNode);
-        id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKAstNode_(self, scenarioOutlineNode);
+        NSString *description_ = GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(self, scenarioOutlineNode);
+        id<JavaUtilList> steps = GHKAstBuilder_getStepsWithGHKGherkinAstNode_(self, scenarioOutlineNode);
         id<JavaUtilList> examplesList = [scenarioOutlineNode getItemsWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Examples_Definition)];
         return create_GHKAScenarioOutline_initWithJavaUtilList_withGHKALocation_withNSString_withNSString_withNSString_withJavaUtilList_withJavaUtilList_(tags, GHKAstBuilder_getLocationWithGHKToken_withInt_(self, scenarioOutlineLine, 0), ((GHKToken *) nil_chk(scenarioOutlineLine))->matchedKeyword_, scenarioOutlineLine->matchedText_, description_, steps, examplesList);
       }
     }
     case GHKParser_RuleType_Enum_Examples_Definition:
     {
-      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKAstNode_(self, node);
-      GHKAstNode *examplesNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Examples) withId:nil];
-      GHKToken *examplesLine = [((GHKAstNode *) nil_chk(examplesNode)) getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, ExamplesLine)];
-      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKAstNode_(self, examplesNode);
+      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKGherkinAstNode_(self, node);
+      GHKGherkinAstNode *examplesNode = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Examples) withId:nil];
+      GHKToken *examplesLine = [((GHKGherkinAstNode *) nil_chk(examplesNode)) getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, ExamplesLine)];
+      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(self, examplesNode);
       id<JavaUtilList> rows = [examplesNode getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Examples_Table) withId:nil];
       GHKATableRow *tableHeader = rows != nil && ![rows isEmpty] ? [rows getWithInt:0] : nil;
       id<JavaUtilList> tableBody = rows != nil && ![rows isEmpty] ? [rows subListWithInt:1 withInt:[rows size]] : nil;
@@ -213,7 +213,7 @@ id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNo
     }
     case GHKParser_RuleType_Enum_Examples_Table:
     {
-      return GHKAstBuilder_getTableRowsWithGHKAstNode_(self, node);
+      return GHKAstBuilder_getTableRowsWithGHKGherkinAstNode_(self, node);
     }
     case GHKParser_RuleType_Enum_Description:
     {
@@ -227,16 +227,16 @@ id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNo
     }
     case GHKParser_RuleType_Enum_Feature:
     {
-      GHKAstNode *header = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Feature_Header) withId:create_GHKAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, Feature_Header))];
+      GHKGherkinAstNode *header = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Feature_Header) withId:create_GHKGherkinAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, Feature_Header))];
       if (header == nil) return nil;
-      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKAstNode_(self, header);
+      id<JavaUtilList> tags = GHKAstBuilder_getTagsWithGHKGherkinAstNode_(self, header);
       GHKToken *featureLine = [header getTokenWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, FeatureLine)];
       if (featureLine == nil) return nil;
       id<JavaUtilList> scenarioDefinitions = create_JavaUtilArrayList_init();
       GHKABackground *background = [node getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Background) withId:nil];
       if (background != nil) [scenarioDefinitions addWithId:background];
       [scenarioDefinitions addAllWithJavaUtilCollection:[node getItemsWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Scenario_Definition)]];
-      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKAstNode_(self, header);
+      NSString *description_ = GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(self, header);
       if (featureLine->matchedGherkinDialect_ == nil) return nil;
       NSString *language = [featureLine->matchedGherkinDialect_ getLanguage];
       return create_GHKAFeature_initWithJavaUtilList_withGHKALocation_withNSString_withNSString_withNSString_withNSString_withJavaUtilList_(tags, GHKAstBuilder_getLocationWithGHKToken_withInt_(self, featureLine, 0), language, featureLine->matchedKeyword_, featureLine->matchedText_, description_, scenarioDefinitions);
@@ -250,9 +250,9 @@ id GHKAstBuilder_getTransformedNodeWithGHKAstNode_(GHKAstBuilder *self, GHKAstNo
   return node;
 }
 
-id<JavaUtilList> GHKAstBuilder_getTableRowsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node) {
+id<JavaUtilList> GHKAstBuilder_getTableRowsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node) {
   id<JavaUtilList> rows = create_JavaUtilArrayList_init();
-  for (GHKToken * __strong token in nil_chk([((GHKAstNode *) nil_chk(node)) getTokensWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, TableRow)])) {
+  for (GHKToken * __strong token in nil_chk([((GHKGherkinAstNode *) nil_chk(node)) getTokensWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, TableRow)])) {
     [rows addWithId:create_GHKATableRow_initWithGHKALocation_withJavaUtilList_(GHKAstBuilder_getLocationWithGHKToken_withInt_(self, token, 0), GHKAstBuilder_getCellsWithGHKToken_(self, token))];
   }
   GHKAstBuilder_ensureCellCountWithJavaUtilList_(self, rows);
@@ -277,20 +277,20 @@ id<JavaUtilList> GHKAstBuilder_getCellsWithGHKToken_(GHKAstBuilder *self, GHKTok
   return cells;
 }
 
-id<JavaUtilList> GHKAstBuilder_getStepsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node) {
-  return [((GHKAstNode *) nil_chk(node)) getItemsWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Step)];
+id<JavaUtilList> GHKAstBuilder_getStepsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node) {
+  return [((GHKGherkinAstNode *) nil_chk(node)) getItemsWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Step)];
 }
 
 GHKALocation *GHKAstBuilder_getLocationWithGHKToken_withInt_(GHKAstBuilder *self, GHKToken *token, jint column) {
   return column == 0 ? ((GHKToken *) nil_chk(token))->location_ : create_GHKALocation_initWithInt_withInt_([((GHKALocation *) nil_chk(((GHKToken *) nil_chk(token))->location_)) getLine], column);
 }
 
-NSString *GHKAstBuilder_getDescriptionWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node) {
-  return [((GHKAstNode *) nil_chk(node)) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Description) withId:nil];
+NSString *GHKAstBuilder_getDescriptionWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node) {
+  return [((GHKGherkinAstNode *) nil_chk(node)) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Description) withId:nil];
 }
 
-id<JavaUtilList> GHKAstBuilder_getTagsWithGHKAstNode_(GHKAstBuilder *self, GHKAstNode *node) {
-  GHKAstNode *tagsNode = [((GHKAstNode *) nil_chk(node)) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Tags) withId:create_GHKAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, None))];
+id<JavaUtilList> GHKAstBuilder_getTagsWithGHKGherkinAstNode_(GHKAstBuilder *self, GHKGherkinAstNode *node) {
+  GHKGherkinAstNode *tagsNode = [((GHKGherkinAstNode *) nil_chk(node)) getSingleWithGHKParser_RuleType:JreLoadEnum(GHKParser_RuleType, Tags) withId:create_GHKGherkinAstNode_initWithGHKParser_RuleType_(JreLoadEnum(GHKParser_RuleType, None))];
   if (tagsNode == nil) return create_JavaUtilArrayList_init();
   id<JavaUtilList> tokens = [tagsNode getTokensWithGHKParser_TokenType:JreLoadEnum(GHKParser_TokenType, TagLine)];
   id<JavaUtilList> tags = create_JavaUtilArrayList_init();

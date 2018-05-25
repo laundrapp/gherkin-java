@@ -21,22 +21,22 @@
 #if !defined (GHKAStep_) && (INCLUDE_ALL_GherkinAstStep || defined(INCLUDE_GHKAStep))
 #define GHKAStep_
 
-#define RESTRICT_GherkinAstAbstractNode 1
-#define INCLUDE_GHKAAbstractNode 1
-#include "gherkin/ast/AbstractNode.h"
+#define RESTRICT_GherkinAstNode 1
+#define INCLUDE_GHKANode 1
+#include "gherkin/ast/Node.h"
 
 @class GHKALocation;
 
-@interface GHKAStep : GHKAAbstractNode
+@interface GHKAStep : GHKANode
 
 #pragma mark Public
 
 - (instancetype __nonnull)initWithGHKALocation:(GHKALocation *)location
                                   withNSString:(NSString *)keyword
                                   withNSString:(NSString *)text
-                          withGHKAAbstractNode:(GHKAAbstractNode *)argument;
+                                  withGHKANode:(GHKANode *)argument;
 
-- (GHKAAbstractNode *)getArgument;
+- (GHKANode *)getArgument;
 
 - (NSString *)getKeyword;
 
@@ -50,11 +50,11 @@
 
 J2OBJC_EMPTY_STATIC_INIT(GHKAStep)
 
-FOUNDATION_EXPORT void GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKAStep *self, GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument);
+FOUNDATION_EXPORT void GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKAStep *self, GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument);
 
-FOUNDATION_EXPORT GHKAStep *new_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT GHKAStep *new_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT GHKAStep *create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKAAbstractNode_(GHKALocation *location, NSString *keyword, NSString *text, GHKAAbstractNode *argument);
+FOUNDATION_EXPORT GHKAStep *create_GHKAStep_initWithGHKALocation_withNSString_withNSString_withGHKANode_(GHKALocation *location, NSString *keyword, NSString *text, GHKANode *argument);
 
 J2OBJC_TYPE_LITERAL_HEADER(GHKAStep)
 
