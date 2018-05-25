@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class ScenarioDefinition extends AbstractNode {
+public abstract class ScenarioDefinition extends Node {
     private final String keyword;
     private final String name;
     private final String description;

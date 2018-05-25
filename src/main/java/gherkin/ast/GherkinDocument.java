@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public class GherkinDocument extends AbstractNode {
+public class GherkinDocument extends Node {
     private final Feature feature;
     private final List<Comment> comments;
 

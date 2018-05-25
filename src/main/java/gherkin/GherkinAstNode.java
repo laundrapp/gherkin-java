@@ -9,11 +9,11 @@ import java.util.Map;
 import static gherkin.Parser.RuleType;
 import static gherkin.Parser.TokenType;
 
-public class AstNode {
+public class GherkinAstNode {
     private final Map<RuleType, List<Object>> subItems = new HashMap<RuleType, List<Object>>();
     public final RuleType ruleType;
 
-    public AstNode(RuleType ruleType) {
+    public GherkinAstNode(RuleType ruleType) {
         this.ruleType = ruleType;
     }
 

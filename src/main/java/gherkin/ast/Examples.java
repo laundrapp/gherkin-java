@@ -3,7 +3,7 @@ package gherkin.ast;
 import java.util.Collections;
 import java.util.List;
 
-public class Examples extends AbstractNode {
+public class Examples extends Node {
     private final List<Tag> tags;
     private final String keyword;
     private final String name;
